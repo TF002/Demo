@@ -1,0 +1,2231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+      作者：Jay,作者VX：JAY_Secretsignal ,qq:2603066228,tg：Jay_Star666
+    -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>expensesreceipt票据生成</title>
+
+    <!-- 
+      引入 html2canvas 库
+    -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- 引入 SheetJS 库用于读取 Excel 文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- 引入 JsBarcode 库用于生成标准条形码 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+
+    <!-- 引入 JSZip 库用于打包下载 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- 引入 Bootstrap CSS 以确保样式统一 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/general-grocery-store.css">
+</head>
+
+<body>
+
+    <!-- 新增：模板选择器 -->
+    <div class="template-selector-box">
+        <label for="template-selector">选择票据模板:</label>
+        <select id="template-selector">
+            <option value="retail-electronic-home-Improvements-chain-store">Retail Electronic/Home Improvements Chain
+                Store</option>
+            <option value="grocery-furniture-store-for-online-receipts">Grocery/Furniture Store for Online Receipts
+            </option>
+            <option value="electronic-store-receipt-maker">Electronic Store Receipt Maker</option>
+            <option value="general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts">General
+                Grocery Store Template</option>
+            <option value="online-receipts-for-furniture-shop">Online Receipts for Furniture Shop</option>
+        </select>
+    </div>
+
+    <!-- 
+      票据的HTML结构容器
+    -->
+    <div id="template-wrapper">
+
+        <!-- 模板 1: Retail (原始模板) -->
+        <div class="print receipt-template" id="retail-electronic-home-Improvements-chain-store">
+            <div class="card xrt">
+                <div class="card-body main-template lblBody" id="labelBodys">
+                    <div class="form-group mb-1" style="margin-right:6px;">
+                        <table class="table-borderless mt-3">
+                            <tbody>
+                                <tr class="text-center table-header">
+                                    <td class="logo"><img src="./assets/img/logo-placeholder.png"></td>
+                                </tr>
+                            </tbody>
+
+                            <table class="mt-1">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center;"><span class="cityName">Charles-60174</span></td>
+                                    </tr>
+                                </tbody>
+                                <tbody class="added_content Paddress">
+                                    <tr class="remove_tr">
+                                        <td style="text-align: center;"><span class="address1"
+                                                data-right="Address Here">630-584-0220</span></td>
+                                    </tr>
+                                    <tr class="remove_tr address-line-styled">
+                                        <td><span class="address2" data-right="Address Here">2400 E
+                                                Main St St</span></td>
+                                    </tr>
+                                    <tr class="remove_tr address-line-styled">
+                                        <td><span class="address3" data-right="Address Here">Charles
+                                                IL 60174</span></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <span class="checkindate rightdate dateformat">09/01/2025</span> <span
+                                                class="rightnowtime checkintime">12:25:47</span>
+                                            &nbsp;<span class="expireLabel dateformat" style="display: none;">EXPIRES
+                                                &nbsp;</span><span class="expireDate rightdate"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr class="pr_barcode" style="">
+                                        <td>
+                                            <svg class="barcode w-100"
+                                                style="height: 70px; transform: translate(0px, 0px); background: rgb(255, 255, 255);"
+                                                width="310px" height="70px" x="0px" y="0px" viewBox="0 0 310 70"
+                                                xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                            </svg>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="itemTable">
+                                <tbody class="added_content Pitem">
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>9131567</span> </td>
+                                                        <td style="text-align: left;"><span>Milk 1GAL</span></td>
+                                                        <td><span>N</span></td>
+                                                        <td><span>$ </span><span>4.29</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1498256</span> </td>
+                                                        <td style="text-align: left;"><span>Bread Loaf</span></td>
+                                                        <td><span>N</span></td>
+                                                        <td><span>$ </span><span>3.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>0321342</span> </td>
+                                                        <td style="text-align: left;"><span>Ground Beef 1LB</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>8.99</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>2268914</span> </td>
+                                                        <td style="text-align: left;"><span>Aspirin 100ct</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>6.75</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="remove_tr">
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr class="subItemTr">
+                                                        <td><span>1768545</span> </td>
+                                                        <td style="text-align: left;"><span>Soda 2L</span></td>
+                                                        <td><span>T</span></td>
+                                                        <td><span>$ </span><span>2.50</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="4">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="2" style="text-align: right;"><span>SUBTOTAL</span>
+                                                        </td>
+                                                        <td style="width:30%;text-align: right;">
+                                                            <span>$ </span><span>26.03</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody class="added_content Ptax">
+                                    <tr>
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="2" style="text-align: right;"><span
+                                                                id="taxLabel">TAX</span></td>
+                                                        <td style="width:30%;text-align: right;">
+                                                            <span>$ </span><span id="taxValue">1.46</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table class="fourTdTable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="2" style="text-align: right;"><span>TOTAL</span>
+                                                        </td>
+                                                        <td style="width:30%;text-align: right;">
+                                                            <span>$ </span><span>27.49</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="2"
+                                                            style="text-align: right;padding-left:0;width:50%;">
+                                                            <span>*</span><span id="cardLastFour">1234</span> <span
+                                                                id="cardType">VISA</span> <span>
+                                                                CHARGE</span>
+                                                        </td>
+                                                        <td style="width:30%;text-align: right;">
+                                                            <span>$ </span><span>27.49</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="recVcd">REC#1-1243-2351-9893-1758-8 VCD#323-717-213</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <span class="DashLine">- - - - - - - - - - - - - - - - - - - - - - - - - - -
+                                                - -
+                                                - -
+                                                - - - - - - - - - - - -</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="text-center mb-1 thank mt-0">
+                                <tbody>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr class="thank_dis" style="display: table-row;">
+                                        <td>
+                                            <pre class="message">Thank You. 
+Please Come Again</pre>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模板 2: Grocery (新增模板) -->
+        <div class="print receipt-template" id="grocery-furniture-store-for-online-receipts" style="display:none;">
+            <div class="card xrt">
+                <div class="card-body main-template lblBody" id="labelBodys">
+                    <div class="form-group mb-1">
+                        <!-- text-right -->
+                        <table class="table-borderless mt-3">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <pre class="headerLine mb-0 text-left">Give us feedback 
+Thank you! ID #: 79DSFXCWFGH2384B</pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="text-center table-header">
+                                    <td class="logo"><img src="./assets/img/logo-placeholder.png"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="added_content mt-2 Paddress">
+                            <tbody>
+                                <tr class="remove_tr">
+                                    <td><span class="address1" data-right="Address Here">703-361-9900</span></td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address2" data-right="Address Here">8346 Shoppers Square</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address3" data-right="Address Here">ManassasVA 201l1</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="mt-2 four_td">
+                            <tbody>
+                                <tr>
+                                    <td>ST# <span class="st">2640</span> OP#</td>
+                                    <td><span class="op">67303316</span> TE#</td>
+                                    <td><span class="te">36</span></td>
+                                    <td>TR# <span class="tr">60548</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="added_content Pfare product-fare-table">
+                            <tbody>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename1" data-right="Item Name">Energy
+                                                            Drink</span></td>
+                                                    <td><span class="farenumber1">049726593100</span></td>
+                                                    <td><span class="fareF1" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice1 comma" data-right="0.00">26.99</span><span
+                                                            class="fareX1" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown1" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="farename2-cell"><span class="farename2"
+                                                            data-right="Item Name">Fruit Bars</span></td>
+                                                    <td><span class="farenumber2">084319841231</span></td>
+                                                    <td><span class="fareF2" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice2 comma" data-right="0.00">7.09</span><span
+                                                            class="fareX2" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown2" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename3" data-right="Item Name">Coconut
+                                                            Water</span></td>
+                                                    <td><span class="farenumber3">076798771848</span></td>
+                                                    <td><span class="fareF3" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice3 comma" data-right="0.00">12.99</span><span
+                                                            class="fareX3" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown3" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename4" data-right="Item Name">Alfredo
+                                                            Chicke</span></td>
+                                                    <td><span class="farenumber4">0107511018182</span></td>
+                                                    <td><span class="fareF4" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice4 comma" data-right="0.00">14.99</span><span
+                                                            class="fareX4" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown4" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename5" data-right="Item Name">HONEYCOMB</span>
+                                                    </td>
+                                                    <td><span class="farenumber5">025096707943</span></td>
+                                                    <td><span class="fareF5" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice5 comma" data-right="0.00">2.28</span><span
+                                                            class="fareX5" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown5" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename6" data-right="Item Name">GV TW SH
+                                                            CH</span></td>
+                                                    <td><span class="farenumber6">0107320380456</span></td>
+                                                    <td><span class="fareF6" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice6 comma" data-right="0.00">1.88</span><span
+                                                            class="fareX6" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown6" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename7" data-right="Item Name">APPLE 3
+                                                            BAG</span></td>
+                                                    <td><span class="farenumber7">033858940707</span></td>
+                                                    <td><span class="fareF7" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice7 comma" data-right="0.00">6.47</span><span
+                                                            class="fareX7" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown7" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename8" data-right="Item Name">Drylands
+                                                            Win</span></td>
+                                                    <td><span class="farenumber8">0107494159125</span></td>
+                                                    <td><span class="fareF8" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice8 comma"
+                                                            data-right="0.00">223.08</span><span class="fareX8"
+                                                            data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown8" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename9" data-right="Item Name">erylxnd</span>
+                                                    </td>
+                                                    <td><span class="farenumber9">010728527937</span></td>
+                                                    <td><span class="fareF9" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice9 comma"
+                                                            data-right="0.00">223.08</span><span class="fareX9"
+                                                            data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content">
+                                                    <td colspan="4"><span class="faredown9" data-right=""></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="four_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="farename10" data-right="Item Name">xrylands</span>
+                                                    </td>
+                                                    <td><span class="farenumber10">019205903818</span></td>
+                                                    <td><span class="fareF10" data-right="">F</span></td>
+                                                    <td class="text-right"><span class="currency">$</span><span
+                                                            class="fareprice10 comma" data-right="0.00">1.1</span><span
+                                                            class="fareX10" data-right="X">X</span></td>
+                                                </tr>
+                                                <tr class="down_content" style="display: table-row;">
+                                                    <td colspan="4"><span class="faredown10" data-right="">Sauvl Blanc @
+                                                            12 pk / 750ml</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="four_td">
+                            <tbody>
+                                <tr class="spacing-row">
+                                    <td colspan="4">
+                                        <p style="height: 5px;"></p>
+                                    </td>
+                                </tr>
+                                <tr class="subtotal-row">
+                                    <td></td>
+                                    <td class="text-right">SUBTOTAL</td>
+                                    <td></td>
+                                    <td class="text-right"><span class="currency">$</span><span
+                                            class="subtotal comma">295.77</span><span class="farespace">&nbsp;</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="added_content four_td Ptax">
+                            <tbody>
+                                <tr class="remove_tr">
+                                    <td class="text-right"><span class="taxname1" data-right="TAX">TAX</span></td>
+                                    <td class="text-right"><span class="taxpro1 comma"
+                                            data-right="0.000">8.25</span><label class="promark m-0"
+                                            style="display: inline-block;"> %&nbsp;&nbsp; </label></td>
+                                    <td></td>
+                                    <td class="text-right"><span class="currency">$</span><span class="taxprice1 comma"
+                                            data-right="0.00">16.38</span><span class="farespace">&nbsp;</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="four_td">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-right">TOTAL</td>
+                                    <td></td>
+                                    <td class="text-right"><span class="currency">$</span><span
+                                            class="total comma">312.15</span><span class="farespace">&nbsp;</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="four_td">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-right"><span class="swipe">VISA</span> &nbsp;TEND</td>
+                                    <td></td>
+                                    <td class="text-right"><span class="currency">$</span><span
+                                            class="comma tend">312.15</span><span class="farespace">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-right">CHANGE DUE</td>
+                                    <td></td>
+                                    <td class="text-right"><span class="currency">$</span><span
+                                            class="change comma">0.00</span><span class="farespace">&nbsp;</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="space">
+                        </p>
+                        <table>
+                            <tbody>
+                                <tr class="cash" style="display: table-row;">
+                                    <td class="text-left">ACCOUNT #</td>
+                                    <td class="text-right"><span class="star">★★★★ &nbsp;★★★★ &nbsp;★★★</span></td>
+                                    <td class="text-left" style="width:18%"><span class="lastnumber">2589</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td class="text-left" colspan="3"><span>APPROVAL # </span><span
+                                            class="approval">134N37</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td class="text-left" colspan="3"><span>REF # </span><span
+                                            class="ref">490566763794</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td class="text-left" colspan="3"><span>TERMINAL # </span><span
+                                            class="terminal">8596182706</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="space">
+                        </p>
+                        <table>
+                            <tbody>
+                                <tr class="items_sold">
+                                    <td><span># ITEMS SOLD </span><span class="itemnum">8</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="space">
+                        </p>
+                        <table class="mx-0 w-100 text-center mb-1">
+                            <tbody>
+                                <tr>
+                                    <td style="transform: translate(0px,2px);"><span>TC# </span><span
+                                            class="barvalue">7874 9849 7054 5716 0000</span></td>
+                                </tr>
+                                <tr class="pr_barcode" style="">
+                                    <td>
+                                        <svg class="barcode w-100"
+                                            style="height: 70px; transform: translate(0px, 0px); background: rgb(255, 255, 255);"
+                                            width="314px" height="70px" x="0px" y="0px" viewBox="0 0 354 70"
+                                            xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        </svg>
+                                    </td>
+                                </tr>
+                                <tr class="thank_dis" style="display: table-row;">
+                                    <td class="text-center">
+                                        <pre class="comment">Thank You for Shopping With Us!</pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <span class="enddate rightdate">09/07/2025</span> &nbsp;&nbsp;&nbsp;<span
+                                            class="endtime rightnowtime">14:03</span>
+                                    </td>
+                                </tr>
+                                <tr class="thank_dis" style="display: table-row;">
+                                    <td class="text-center">
+                                        <pre class="message">✯✯✯ CUSTOMER COPY ✯✯✯</pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模板 3: Electronic Store (新增模板) -->
+        <div class="print receipt-template" id="electronic-store-receipt-maker" style="display:none;">
+            <div class="card xrt">
+                <div class="card-body main-template lblBody" id="labelBodys">
+                    <div class="form-group mb-1" style="margin-right:6px;">
+                        <!-- text-right -->
+                        <table class="table-borderless mt-3">
+                            <tbody>
+                                <tr class="text-center table-header">
+                                    <td class="logo"><img src="./assets/img/logo-placeholder.png"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="mt-1">
+                            <tbody>
+                                <tr>
+                                    <td><span class="welcome"></span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tbody class="added_content Paddress">
+                                <tr class="remove_tr">
+                                    <td><span class="address1" data-right="Address Here">703-361-9900</span></td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address2" data-right="Address Here">8346 shoppers Squar</span></td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address3" data-right="Address Here">Manassas VA 20111</span></td>
+                                </tr>
+                            </tbody>
+                            <tbody class="alignservice">
+                                <tr>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="receipt"></span>
+                                    </td>
+                                </tr>
+                                <tr class="pr_barcode" style="">
+                                    <td>
+                                        <svg class="barcode w-100"
+                                            style="height: 45px; transform: translate(0px, 0px); background: rgb(255, 255, 255);"
+                                            width="354px" height="70px" x="0px" y="0px" viewBox="0 0 354 70"
+                                            xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        </svg>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>&nbsp;</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="text-left">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <span>VAL #: </span><span class="val">6105-2789-7575-4735</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="val1">5473 2378 5247</span> &nbsp;&nbsp;<span
+                                            class="checkindate rightdate">09/09/2025</span> &nbsp;&nbsp;<span
+                                            class="rightnowtime checkintime">15:39:00</span> &nbsp;<span
+                                            class="val2">2612459</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>&nbsp;</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="itemTable">
+                            <tbody class="added_content Pitem">
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum1">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA1">7899027</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB1">092304908917</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice1 comma">21.99</span> <span
+                                                            class="itemBT1">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item1_Description1">Yuengling Amber Lager Beer @
+                                                            24pk/12 fl oz</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast1">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum2">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA2">8859311</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB2">86584</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice2 comma">1.11</span> <span
+                                                            class="itemBT2">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item2_Description1">SmirnoffIce Pink Lemonade @
+                                                            6pk-lloz</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast2">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum3">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA3">2971219</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB3">58484</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice3 comma">2.22</span> <span
+                                                            class="itemBT3">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item3_Description1">Froggy B Vodka 1.75L</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast3">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum4">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA4">6026748</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB4">76923</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice4 comma">3.33</span> <span
+                                                            class="itemBT4">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item4_Description1">19 Crimes Snoop Cali Red Blend
+                                                            @ 750ml Bottle</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast4">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum5">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA5">5054645</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB5">47314</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice5 comma">4.44</span> <span
+                                                            class="itemBT5">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item5_Description1">OLIPOP Cream Soda Prebiotic
+                                                            Soda @ 12 fl oz</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast5">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum6">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA6">4149424</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB6">31856</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice6 comma">5.55</span> <span
+                                                            class="itemBT6">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item6_Description1">Stone IPA Variety @
+                                                            12pk-12oz</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast6">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum7">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA7">3540778</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB7">82911</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice7 comma">6.66</span> <span
+                                                            class="itemBT7">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item7_Description1">Drylands Sauvi Blanc @ 15 pk /
+                                                            750ml</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast7">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum8">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA8">8853388</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB8">37563</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice8 comma">7.77</span> <span
+                                                            class="itemBT8">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item8_Description1">Imagery Pinot Noir Red @ 18
+                                                            Bottle / 750 ml</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast8">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum9">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA9">6857963</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB9">24916</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice9 comma">0.00</span> <span
+                                                            class="itemBT9">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item9_Description1">eexagery Pinot Noir hed @ 18
+                                                            eassd / 850 ml</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast9">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden="">
+                                                        <span class="itemNum10">1</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponA10">5656263</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="itemCouponB10">61175</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="currency">$ </span><span
+                                                            class="itemprice10 comma">0.00</span> <span
+                                                            class="itemBT10">N</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="itemDesRight">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3">
+                                                        <span class="item10_Description1">adsgery Pinot Noir xed @ 19
+                                                            xssds / 950 ml</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="PitemSubLast10">
+                                                    <td hidden=""></td>
+                                                    <td colspan="3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="pr-3">
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden=""></td>
+                                                    <td class="text-right" colspan="2" style="width:60%;">
+                                                        <span>SUBTOTAL</span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="subtotalDash">- - - - - - - - - - - - - - - - - - -
+                                                            - - - - - - -</span>
+                                                        <span><span class="currency">$ </span><span
+                                                                class="subtotal comma">53.07</span></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pr-3">
+                                        <table class="PitemSub">
+                                            <tbody class="added_content Ptax">
+
+                                                <tr class="remove_tr">
+                                                    <td hidden=""></td>
+                                                    <td class="text-right" colspan="2" style="width:60%;"><span
+                                                            class="taxname1" data-right="TAX">TAX</span></td>
+                                                    <td class="text-right"><span class="currency">$ </span><span
+                                                            class="taxprice1 comma" data-right="0.00">32.52</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pr-3">
+                                        <table class="PitemSub">
+                                            <tbody>
+                                                <tr>
+                                                    <td hidden=""></td>
+                                                    <td class="text-right" colspan="2" style="width:60%;">
+                                                        <span>TOTAL</span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="totalDash">= = = = = = = = = = = = = = = = = = = =
+                                                            = = =</span>
+                                                        <span><span class="currency">$ </span><span
+                                                                class="total comma">85.59</span></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td hidden=""></td>
+                                                    <td class="text-right" colspan="2" style="width:60%;">
+                                                        <span class="nocashSpan"
+                                                            style="display: inline;">XXXXXXXXXXXX</span><span
+                                                            class="lastNumber nocashSpan"
+                                                            style="display: inline;">6598</span> &nbsp;<span
+                                                            class="cardType">VISA</span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="currency">$ </span><span
+                                                            class="total comma">85.59</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="text-left" style="padding-left:20px;">
+                                        <span>APPROVAL </span><span class="approval">361616</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left" style="padding-left:20px;">
+                                        <span>REFERENCE NUMBER: </span><span class="refNo">94516 87 055 4</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody style="line-height: 1.2;">
+                                <tr>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="message1">Be ready for the Analog to Digital TV</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="text-center mb-1 thank mt-0">
+                            <tbody>
+                                <tr class="thank_dis" style="display: table-row;">
+                                    <td>
+                                        <pre class="message"></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="pin"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模板 4: General Grocery Store (新增模板) -->
+        <div class="print receipt-template"
+            id="general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts" style="display:none;">
+            <div class="card xrt">
+                <div class="card-body main-template lblBody" id="labelBodys">
+                    <div class="form-group mb-1">
+                        <!-- text-right -->
+                        <table class="table-borderless mt-3">
+                            <tbody>
+                                <tr class="text-center table-header">
+                                    <td class="logo"><img src="./assets/img/logo-placeholder.png"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="mt-2">
+                            <tbody class="added_content Paddress">
+                                <tr class="remove_tr">
+                                    <td><span class="address1" data-right="Address Here">Address Here</span></td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address2" data-right="Address Here">Address Here</span></td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address3" data-right="Address Here">Address Here</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="mt-2 three_table">
+                            <tbody class="added_content Pitem">
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname1 d-block" data-right="Item Name">Garlic parmesan
+                                            creen</span>
+                                        <span class="itemdown1" data-right="">123</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown1 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice1 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown1 d-block" data-right=""> </span>
+                                        <span class="itemF1" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname2 d-block" data-right="Item Name">Garlic parmesan
+                                            creen</span>
+                                        <span class="itemdown2" data-right="">213</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown2 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice2 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown2 d-block" data-right=""> </span>
+                                        <span class="itemF2" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname3 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown3" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown3 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice3 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown3 d-block" data-right=""> </span>
+                                        <span class="itemF3" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname4 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown4" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown4 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice4 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown4 d-block" data-right=""> </span>
+                                        <span class="itemF4" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname5 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown5" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown5 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice5 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown5 d-block" data-right=""> </span>
+                                        <span class="itemF5" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname6 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown6" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown6 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice6 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown6 d-block" data-right=""> </span>
+                                        <span class="itemF6" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname7 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown7" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown7 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice7 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown7 d-block" data-right=""> </span>
+                                        <span class="itemF7" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname8 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown8" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown8 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice8 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown8 d-block" data-right=""> </span>
+                                        <span class="itemF8" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname9 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown9" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown9 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice9 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown9 d-block" data-right=""> </span>
+                                        <span class="itemF9" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <span class="itemname10 d-block" data-right="Item Name">123</span>
+                                        <span class="itemdown10" data-right="">Garlic parmesan creen</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown10 d-block" data-right=""> </span>
+                                        <span class="currency"></span><span class="itemprice10 comma"
+                                            data-right="0.00">0.00</span>
+                                    </td>
+                                    <td>
+                                        <span class="sitemdown10 d-block" data-right=""> </span>
+                                        <span class="itemF10" data-right="F">F</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" style="height:17px;"></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td class="pl-3">
+                                        <span>Order Total</span>
+                                    </td>
+                                    <td>
+                                        <span class="currency">$</span><span class="subtotal comma">60.05</span>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody class="added_content Ptax">
+
+                                <tr class="remove_tr">
+                                    <td class="pl-4"><span class="taxname1" data-right="Tax">Tax</span></td>
+                                    <td><span class="currency">$</span><span class="taxprice1 comma"
+                                            data-right="0.00">23.65</span></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td class="pl-3">
+                                        <span>Grand Total</span>
+                                    </td>
+                                    <td>
+                                        <span class="currency">$</span><span class="total comma">83.70</span>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="swipe_c">VISA</span><span class="d-inline-block"
+                                            style="width:32.5%"></span><span class="payment cash_inline"
+                                            style="display: inline-block;">Payment</span>
+                                    </td>
+                                    <td>
+                                        <span class="currency">$</span><span class="totalceil comma">83.70</span>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pl-3">
+                                        <span>Change</span>
+                                    </td>
+                                    <td>
+                                        <span class="currency">$</span><span class="remain comma">0.00</span>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="two_table cash_table" style="display: table;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-center pl-0">
+                                        <span class="dash">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                                            - - - - - - - - - - - - - - - - - - - - </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><span class="presto" data-right="">PRESTO</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Trace #:</span></td>
+                                    <td><span class="trace">909710</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Reference #:</span></td>
+                                    <td><span class="reference">7195138987</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Acct #:</span></td>
+                                    <td><span>XXXXXXXXXXXX</span><span class="acct">6587</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Purchase #:</span></td>
+                                    <td><span class="cardtype">VISA</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Amount #:</span></td>
+                                    <td><span class="total comma">83.70</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Auth #:</span></td>
+                                    <td><span class="auth">357651</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="pr_both">
+                            <tbody>
+                                <tr class="cash" style="display: table-row;">
+                                    <td colspan="2" class="text-center">
+                                        <span class="dash">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                                            - - - - - - - - - - - - - - - - - - - - </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="swipe cash" style="display: table-row;">VISA</span></td>
+                                    <td class="cash_td" style="display: table-cell;"><span>PURCHASE</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td><span class="purchase">741903621086</span></td>
+                                    <td><span class="cardtype">VISA</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td><span>Entry Method:</span></td>
+                                    <td><span class="entry">Chip Read</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td><span>Mode:</span></td>
+                                    <td><span class="mode">Issuer</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td colspan="2" class="text-center">
+                                        <span class="dash">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                                            - - - - - - - - - - - - - - - - - - - - </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="height: 12px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <span>Your cashier was </span><span class="cashier">Maria Rodriguez</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="height: 12px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <span class="enddate rightdate">09/11/2025</span> <span
+                                            class="endtime rightnowtime">15:03</span>
+                                        <span class="sroc">S9264 R6095 O9654 C2253</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="space">
+                        </p>
+                        <table class="mx-0 w-100 text-center mb-1">
+                            <tbody>
+                                <tr class="thank_dis" style="display: table-row;">
+                                    <td>
+                                        <pre class="message1">Together, we'll get through this COVID-19 Situation.</pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 12px;"></td>
+                                </tr>
+                                <tr class="thank_dis" style="display: table-row;">
+                                    <td>
+                                        <pre class="message2">★★★ CUSTOMER COPY ★★★</pre>
+                                    </td>
+                                </tr>
+                                <tr class="pr_barcode" style="">
+                                    <td>
+                                        <svg class="barcode w-100"
+                                            style="height: 70px; transform: translate(0px, 0px); background: rgb(255, 255, 255);"
+                                            width="354px" height="70px" x="0px" y="0px" viewBox="0 0 354 70"
+                                            xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                            <g transform="translate(10, 10)" style="fill:#000000;">
+                                                <rect x="0" y="0" width="4" height="50"></rect>
+                                                <rect x="6" y="0" width="2" height="50"></rect>
+                                                <rect x="12" y="0" width="6" height="50"></rect>
+                                                <rect x="22" y="0" width="2" height="50"></rect>
+                                                <rect x="28" y="0" width="6" height="50"></rect>
+                                                <rect x="36" y="0" width="4" height="50"></rect>
+                                                <rect x="44" y="0" width="2" height="50"></rect>
+                                                <rect x="48" y="0" width="4" height="50"></rect>
+                                                <rect x="58" y="0" width="2" height="50"></rect>
+                                                <rect x="66" y="0" width="2" height="50"></rect>
+                                                <rect x="74" y="0" width="4" height="50"></rect>
+                                                <rect x="82" y="0" width="2" height="50"></rect>
+                                                <rect x="88" y="0" width="2" height="50"></rect>
+                                                <rect x="96" y="0" width="4" height="50"></rect>
+                                                <rect x="104" y="0" width="2" height="50"></rect>
+                                                <rect x="110" y="0" width="2" height="50"></rect>
+                                                <rect x="120" y="0" width="4" height="50"></rect>
+                                                <rect x="128" y="0" width="2" height="50"></rect>
+                                                <rect x="132" y="0" width="8" height="50"></rect>
+                                                <rect x="144" y="0" width="2" height="50"></rect>
+                                                <rect x="148" y="0" width="2" height="50"></rect>
+                                                <rect x="154" y="0" width="4" height="50"></rect>
+                                                <rect x="160" y="0" width="2" height="50"></rect>
+                                                <rect x="168" y="0" width="6" height="50"></rect>
+                                                <rect x="176" y="0" width="2" height="50"></rect>
+                                                <rect x="184" y="0" width="4" height="50"></rect>
+                                                <rect x="192" y="0" width="2" height="50"></rect>
+                                                <rect x="198" y="0" width="4" height="50"></rect>
+                                                <rect x="206" y="0" width="2" height="50"></rect>
+                                                <rect x="212" y="0" width="6" height="50"></rect>
+                                                <rect x="220" y="0" width="4" height="50"></rect>
+                                                <rect x="226" y="0" width="4" height="50"></rect>
+                                                <rect x="234" y="0" width="4" height="50"></rect>
+                                                <rect x="242" y="0" width="6" height="50"></rect>
+                                                <rect x="250" y="0" width="2" height="50"></rect>
+                                                <rect x="254" y="0" width="8" height="50"></rect>
+                                                <rect x="264" y="0" width="2" height="50"></rect>
+                                                <rect x="270" y="0" width="6" height="50"></rect>
+                                                <rect x="278" y="0" width="4" height="50"></rect>
+                                                <rect x="286" y="0" width="2" height="50"></rect>
+                                                <rect x="294" y="0" width="4" height="50"></rect>
+                                                <rect x="300" y="0" width="6" height="50"></rect>
+                                                <rect x="308" y="0" width="4" height="50"></rect>
+                                                <rect x="318" y="0" width="6" height="50"></rect>
+                                                <rect x="326" y="0" width="2" height="50"></rect>
+                                                <rect x="330" y="0" width="4" height="50"></rect>
+                                            </g>
+                                        </svg>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模板 5: Online Receipts for Furniture Shop (新增模板) -->
+        <div class="print receipt-template" id="online-receipts-for-furniture-shop" style="display:none;">
+            <div class="card xrt">
+                <div class="card-body main-template lblBody" id="labelBodys">
+                    <div class="form-group mb-1">
+                        <!-- text-right -->
+                        <table class="table-borderless mt-3">
+                            <tbody>
+                                <tr class="text-center table-header">
+                                    <td class="logo"><img src="./assets/img/logo-placeholder.png"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="added_content mt-2 Paddress">
+                            <tbody>
+                                <tr class="remove_tr">
+                                    <td><span class="address1" data-right="Address Here">703-361-9900</span></td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address2" data-right="Address Here">8346 shoppers Square</span>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td><span class="address3" data-right="Address Here">Manassas VA 201l1</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="mt-2 pr_both">
+                            <tbody>
+                                <tr>
+                                    <td><span>SALE</span></td>
+                                    <td><span class="sale">40094820903527530000</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><span class="enddate rightdate">09/11/2025</span> &nbsp;&nbsp;&nbsp;<span
+                                            class="endtime rightnowtime">20:07</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="my-2">
+                            <tbody>
+                                <tr>
+                                    <td class="text-left"><span class="print_header">QTY</span></td>
+                                    <td class="text-left"><span class="print_header">SKU</span></td>
+                                    <td class="text-right"><span class="print_header">PRICE</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="added_content Pfare">
+                            <tbody>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty1" data-right="1">1</span></td>
+                                                    <td><span class="farename1" data-right="Item Name">BEATBOX PINK LEM
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber1">017262885190</span></td>
+                                                    <td><span class="fareprice1 comma"
+                                                            data-right="0.00">1.10</span><span class="fareN1"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty2" data-right="1">2</span></td>
+                                                    <td><span class="farename2" data-right="Item Name">BEATBOX PINK AAA
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber2">021168013682</span></td>
+                                                    <td><span class="fareprice2 comma"
+                                                            data-right="0.00">4.40</span><span class="fareN2"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty3" data-right="1">3</span></td>
+                                                    <td><span class="farename3" data-right="Item Name">BEATBOX PINK BBB
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber3">0103641754857</span></td>
+                                                    <td><span class="fareprice3 comma"
+                                                            data-right="0.00">9.90</span><span class="fareN3"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty4" data-right="1">4</span></td>
+                                                    <td><span class="farename4" data-right="Item Name">BEATBOX PINK CCC
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber4">015813629262</span></td>
+                                                    <td><span class="fareprice4 comma"
+                                                            data-right="0.00">17.60</span><span class="fareN4"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty5" data-right="1">5</span></td>
+                                                    <td><span class="farename5" data-right="Item Name">BEATBOX PINK DDD
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber5">065240935395</span></td>
+                                                    <td><span class="fareprice5 comma"
+                                                            data-right="0.00">27.50</span><span class="fareN5"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty6" data-right="1">6</span></td>
+                                                    <td><span class="farename6" data-right="Item Name">BEATBOX PINK EEE
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber6">087405843471</span></td>
+                                                    <td><span class="fareprice6 comma"
+                                                            data-right="0.00">39.60</span><span class="fareN6"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty7" data-right="1">7</span></td>
+                                                    <td><span class="farename7" data-right="Item Name">BEATBOX PINK FFF
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber7">014155773078</span></td>
+                                                    <td><span class="fareprice7 comma"
+                                                            data-right="0.00">53.90</span><span class="fareN7"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty8" data-right="1">8</span></td>
+                                                    <td><span class="farename8" data-right="Item Name">BEATBOX PINK XXX
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber8">082990357909</span></td>
+                                                    <td><span class="fareprice8 comma"
+                                                            data-right="0.00">70.40</span><span class="fareN8"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty9" data-right="1">9</span></td>
+                                                    <td><span class="farename9" data-right="Item Name">BEATBOX PINK LLL
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber9">054906330372</span></td>
+                                                    <td><span class="fareprice9 comma"
+                                                            data-right="0.00">89.10</span><span class="fareN9"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="remove_tr">
+                                    <td>
+                                        <table class="three_td">
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="qty10" data-right="1">10</span></td>
+                                                    <td><span class="farename10" data-right="Item Name">BEATBOX PINK PPP
+                                                            500ML</span></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><span class="farenumber10">027996919056</span></td>
+                                                    <td><span class="fareprice10 comma"
+                                                            data-right="0.00">101.00</span><span class="fareN10"
+                                                            data-right="N">N</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="w-75 text-left" style="padding-left: 10px;">
+                                        <span>SUBTOTAL</span>
+                                    </td>
+                                    <td class="text-right"><span class="currency">$</span><span
+                                            class="subtotal comma">414.50</span><span class="farespace">&nbsp;</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="added_content Ptax three_td">
+                            <tbody>
+
+                                <tr class="remove_tr">
+                                    <td></td>
+                                    <td><span class="taxname1" data-right="TAX">TAX</span> &nbsp;<span
+                                            class="taxpro1 comma" data-right="0.000">6.35</span><label
+                                            class="promark m-0" style="display: inline-block;"> %&nbsp;&nbsp; </label>
+                                    </td>
+                                    <td><span class="currency">$</span><span class="taxprice1 comma"
+                                            data-right="0.00">7.55</span><span class="farespace">&nbsp;</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="w-75 text-left" style="padding-left: 10px;">
+                                        <span>TOTAL</span>
+                                    </td>
+                                    <td class="text-right"><span class="currency">$</span><span
+                                            class="total comma">422.05</span><span class="farespace">&nbsp;</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="space">
+                        </p>
+                        <table class="pr_both">
+                            <tbody>
+                                <tr>
+                                    <td><span class="swipe">VISA</span></td>
+                                    <td><span class="currency">$</span><span class="total comma">422.05</span><span
+                                            class="farespace">&nbsp;</span></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td><span>Card No .: </span> &nbsp;<span class="lastnumber">8542</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td><span>Chip Read </span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td><span>Auth No .: </span><span class="authoriz">428562</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="cash" style="display: table-row;">
+                                    <td><span>AID .: </span><span class="aid">70M59WJ506C3</span></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <table class="four_td">
+                        <tr>
+                           <td></td>
+                           <td class="text-right">CHANGE DUE</td>
+                           <td></td>
+                           <td><span class="change comma"></span><span> &nbsp;</span></td>
+                        </tr>
+                     </table> -->
+                        <p class="space">
+                        </p>
+                        <p class="space">
+                        </p>
+                        <table>
+                            <tbody>
+                                <tr class="items_sold">
+                                    <td><span># TOTAL ITEMS </span><span class="itemnum">10</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="space">
+                        </p>
+                        <table class="mx-0 w-100 text-center mb-1">
+                            <tbody>
+                                <tr class="pr_barcode" style="">
+                                    <td>
+                                        <svg class="barcode w-100"
+                                            style="height: 70px; transform: translate(0px, 0px); background: rgb(255, 255, 255);"
+                                            width="354px" height="70px" x="0px" y="0px" viewBox="0 0 354 70"
+                                            xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                            <g transform="translate(10, 10)" style="fill:#000000;">
+                                                <rect x="0" y="0" width="4" height="50"></rect>
+                                                <rect x="6" y="0" width="2" height="50"></rect>
+                                                <rect x="12" y="0" width="6" height="50"></rect>
+                                                <rect x="22" y="0" width="2" height="50"></rect>
+                                                <rect x="28" y="0" width="6" height="50"></rect>
+                                                <rect x="36" y="0" width="4" height="50"></rect>
+                                                <rect x="44" y="0" width="2" height="50"></rect>
+                                                <rect x="48" y="0" width="4" height="50"></rect>
+                                                <rect x="58" y="0" width="2" height="50"></rect>
+                                                <rect x="66" y="0" width="2" height="50"></rect>
+                                                <rect x="74" y="0" width="4" height="50"></rect>
+                                                <rect x="82" y="0" width="2" height="50"></rect>
+                                                <rect x="88" y="0" width="2" height="50"></rect>
+                                                <rect x="96" y="0" width="4" height="50"></rect>
+                                                <rect x="104" y="0" width="2" height="50"></rect>
+                                                <rect x="110" y="0" width="2" height="50"></rect>
+                                                <rect x="120" y="0" width="4" height="50"></rect>
+                                                <rect x="128" y="0" width="2" height="50"></rect>
+                                                <rect x="132" y="0" width="8" height="50"></rect>
+                                                <rect x="144" y="0" width="2" height="50"></rect>
+                                                <rect x="148" y="0" width="2" height="50"></rect>
+                                                <rect x="154" y="0" width="4" height="50"></rect>
+                                                <rect x="160" y="0" width="2" height="50"></rect>
+                                                <rect x="168" y="0" width="6" height="50"></rect>
+                                                <rect x="176" y="0" width="2" height="50"></rect>
+                                                <rect x="184" y="0" width="4" height="50"></rect>
+                                                <rect x="192" y="0" width="2" height="50"></rect>
+                                                <rect x="198" y="0" width="4" height="50"></rect>
+                                                <rect x="206" y="0" width="2" height="50"></rect>
+                                                <rect x="212" y="0" width="6" height="50"></rect>
+                                                <rect x="220" y="0" width="4" height="50"></rect>
+                                                <rect x="226" y="0" width="4" height="50"></rect>
+                                                <rect x="234" y="0" width="4" height="50"></rect>
+                                                <rect x="242" y="0" width="6" height="50"></rect>
+                                                <rect x="250" y="0" width="2" height="50"></rect>
+                                                <rect x="254" y="0" width="8" height="50"></rect>
+                                                <rect x="264" y="0" width="2" height="50"></rect>
+                                                <rect x="270" y="0" width="6" height="50"></rect>
+                                                <rect x="278" y="0" width="4" height="50"></rect>
+                                                <rect x="286" y="0" width="2" height="50"></rect>
+                                                <rect x="294" y="0" width="4" height="50"></rect>
+                                                <rect x="300" y="0" width="6" height="50"></rect>
+                                                <rect x="308" y="0" width="4" height="50"></rect>
+                                                <rect x="318" y="0" width="6" height="50"></rect>
+                                                <rect x="326" y="0" width="2" height="50"></rect>
+                                                <rect x="330" y="0" width="4" height="50"></rect>
+                                            </g>
+                                        </svg>
+                                    </td>
+                                </tr>
+                                <tr class="thank_dis" style="display: table-row;">
+                                    <td>
+                                        <pre class="message">✯✯✯ CUSTOMER COPY ✯✯✯</pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+      下载按钮
+    -->
+    <button id="download-btn">下载为 PNG</button>
+
+    <!-- Logo上传功能 -->
+    <div class="logo-upload-section"
+        style="margin: 1rem 0; text-align: center; border: 1px solid #ddd; padding: 1rem; border-radius: 5px; max-width: 420px;">
+        <h4 style="margin-bottom: 1rem; font-size: 16px;">Logo上传</h4>
+        <div style="margin-bottom: 1rem;">
+            <input type="file" id="logo-file-input" accept="image/*" multiple style="margin-bottom: 0.5rem;">
+            <button id="upload-logo-btn"
+                style="padding: 8px 16px; background-color: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">上传Logo</button>
+            <button id="remove-logo-btn"
+                style="padding: 8px 16px; background-color: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer; margin-left: 0.5rem;">移除Logo</button>
+        </div>
+        <div id="logo-preview"
+            style="border: 1px dashed #ccc; padding: 1rem; min-height: 80px; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;">
+            <span style="color: #666;">选择图片文件来预览logo</span>
+        </div>
+    </div>
+
+    <hr style="margin: 2rem 0; width: 100%; max-width: 420px;">
+
+    <!-- 批量生成功能 -->
+    <div style="text-align: center; margin-bottom: 1rem;">
+        <h3 style="font-family: sans-serif; margin-bottom: 1rem;">批量生成工具</h3>
+        <p style="font-size: 14px; color: #555;">注意: 批量生成功能支持 "Retail"、"Grocery"、"Electronic Store Receipt Maker"、
+            "General Grocery Store" 和 "Online Receipts for Furniture Shop" 模板。
+        </p>
+        <input type="file" id="excel-file-input" accept=".xlsx, .xls" style="display: block; margin: 0 auto 1rem;">
+        <button id="batch-generate-btn">从Excel批量生成</button>
+        <div id="status-display" style="margin-top: 1rem; font-family: sans-serif;"></div>
+    </div>
+
+    <!-- 新增：模板切换逻辑，下载功能，批量生成等JavaScript功能 -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

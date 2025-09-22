@@ -1,0 +1,160 @@
+/* Styles for General Grocery Store Template */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .card.xrt {
+    width: 351px;
+    font-family: 'FS_MCF';
+    font-size: 14px;
+    color: black;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .lblBody {
+    width: 345px;
+    max-width: 345px;
+    min-width: 345px;
+    padding: 16px;
+    margin: 0 3px;
+    color: black;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .form-group.mb-1 {
+    width: 313px;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts td {
+    padding: 1px;
+}
+
+/* Item table layout */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .three_table td {
+    vertical-align: bottom;
+    font-size: 14px;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .three_table td:nth-child(1) {
+    width: 65%;
+    text-align: left;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .three_table td:nth-child(2) {
+    width: 25%;
+    text-align: right;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .three_table td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .d-block {
+    display: block;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .pl-3 {
+    padding-left: 16px !important;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .pl-4 {
+    padding-left: 24px !important;
+}
+
+/* Totals section alignment */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .three_table tbody:not(.Pitem) td:nth-child(1) {
+    text-align: left;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .three_table tbody:not(.Pitem) td:nth-child(2) {
+    text-align: right;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .three_table tbody:not(.Pitem) {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+/* Payment details table */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .two_table td:nth-child(1) {
+    width: 50%;
+    text-align: left;
+    padding-left: 15%;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .two_table td:nth-child(2) {
+    width: 60%;
+    text-align: left;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .pr_both td {
+    width: 50%;
+    vertical-align: top;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .pr_both td:nth-child(2) {
+    text-align: right;
+}
+
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .dash {
+    font-size: 12px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    height: 10px;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .cash_table {
+    display: table;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .d-inline-block {
+    display: inline-block;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .payment.cash_inline {
+    display: inline-block;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .text-center {
+    text-align: center;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .logo img {
+    max-width: 225px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .Paddress {
+    text-align: center;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .Paddress span {
+    font-size: 14px !important;
+    font-weight: normal !important;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts pre {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    text-align: center;
+    margin: 0;
+}
+
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .message1,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .message2 {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    color: black;
+    margin-bottom: 0px !important;
+    line-height: 1.5;
+    white-space: pre-wrap !important;
+}

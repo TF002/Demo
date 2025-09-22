@@ -1,0 +1,4408 @@
+/* 关键改动：确保字体只从您指定的URL加载 */
+@font-face {
+    font-family: 'FS_MCF';
+    /* 
+              请将 '字体.woff2' 文件内容转换为 Base64 字符串，
+              然后将其粘贴到下面的 url() 中，替换掉 "在此处粘贴..." 这部分文本。
+            */
+    src: url('data:application/octet-stream;base64,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') format('woff2'),
+        url('data:application/octet-stream;base64,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') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.credit-tend-cell {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-cell;
+    font-family: FS_MCF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    height: 14px;
+    line-height: 12px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    text-align: right;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    vertical-align: middle;
+    width: 103.281px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.address-line-styled {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    color: rgb(0, 0, 0);
+    display: table-row;
+    font-family: FS_MCF, monospace;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    height: 15px;
+    line-height: 13px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-indent: 0px;
+    unicode-bidi: isolate;
+    vertical-align: middle;
+    width: 100%;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#grocery-furniture-store-for-online-receipts .store-info-table {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: 'FS_MCF';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 16px;
+    line-height: 14px;
+    margin-top: 8px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    padding-bottom: 0px;
+    padding-left: 3.125px;
+    padding-right: 3.125px;
+    padding-top: 0px;
+    text-align: center;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    width: 100%;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.product-fare-table {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: FS_MCF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    height: 174px;
+    line-height: 12px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    padding-bottom: 0px;
+    padding-left: 3.125px;
+    padding-right: 3.125px;
+    padding-top: 0px;
+    text-align: center;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    width: 100%;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.product-fare-table .four_td td:first-child {
+    text-align: left;
+}
+
+.farename2-cell {
+    text-align: left;
+}
+
+.farename2-cell {
+    text-align: left;
+}
+
+.headerLine {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: FS_MCF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    height: 36px;
+    line-height: 18px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    overflow-x: auto;
+    overflow-y: auto;
+    text-align: left;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    text-wrap: wrap;
+    unicode-bidi: isolate;
+    white-space-collapse: preserve;
+    width: 100%;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.address-block-tbody {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row-group;
+    font-family: FS_MCF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    height: 42px;
+    line-height: 12px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    vertical-align: middle;
+    width: 100%;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.address2,
+.address3 {
+    font-family: FS_MCF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 12px;
+}
+
+#retail-electronic-home-Improvements-chain-store .address2,
+#retail-electronic-home-Improvements-chain-store .address3 {
+    border-collapse: collapse;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: FS_MCF, monospace;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    height: 13px;
+    line-height: 13px;
+    text-align: center;
+    text-indent: 0px;
+    width: 100%;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+#grocery-furniture-store-for-online-receipts .farename2 {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: inline;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: auto;
+    line-height: 14px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    text-align: left;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    text-wrap: wrap;
+    white-space-collapse: preserve;
+    width: auto;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 移除原有的通用规则，使用上面的模板特定全局规则 */
+/* #grocery-furniture-store-for-online-receipts *:not(.items_sold):not(.items_sold *):not(.star):not(.text-right:has(.star)) {
+    font-size: 14px !important;
+    font-weight: normal !important;
+} */
+
+/* 为Grocery模板的product-fare-table排除174px高度限制 */
+#grocery-furniture-store-for-online-receipts .product-fare-table {
+    height: auto !important;
+}
+
+/* 为Grocery模板的form-group mb-1元素添加边距样式 */
+#grocery-furniture-store-for-online-receipts .form-group.mb-1,
+#grocery-furniture-store-for-online-receipts .my-1 {
+    margin-bottom: .25rem !important;
+}
+
+/* 解决Grocery模板高度固定问题，让高度根据内容动态调整 */
+#grocery-furniture-store-for-online-receipts div.form-group.mb-1 {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    block-size: auto !important;
+}
+
+/* 为Grocery模板的主容器添加动态高度 */
+#grocery-furniture-store-for-online-receipts .card.xrt {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+}
+
+#grocery-furniture-store-for-online-receipts .card-body {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+}
+
+#grocery-furniture-store-for-online-receipts .main-template {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+}
+
+
+
+
+
+
+
+
+/* 为特定的间距行添加样式 */
+.spacing-row {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 7px;
+    line-height: 14px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    vertical-align: middle;
+    width: 313px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 为Grocery模板的间距行添加特定样式 */
+#grocery-furniture-store-for-online-receipts .spacing-row {
+    height: 7px;
+}
+
+#grocery-furniture-store-for-online-receipts .spacing-row p {
+    height: 7px !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* 为Grocery模板的SUBTOTAL行添加特定样式 */
+#grocery-furniture-store-for-online-receipts .subtotal-row {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 16px;
+    line-height: 14px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    vertical-align: middle;
+    width: 313px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 为Grocery模板的地址表格添加特定样式 */
+#grocery-furniture-store-for-online-receipts .added_content.mt-2.Paddress {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 48px;
+    line-height: 14px;
+    margin-top: 8px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    padding-bottom: 0px;
+    padding-left: 3.125px;
+    padding-right: 3.125px;
+    padding-top: 0px;
+    text-align: center;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    width: 313px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 为Grocery模板的店铺信息表格添加特定样式 */
+#grocery-furniture-store-for-online-receipts .mt-2.four_td {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #868e96;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #868e96;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --pwidth: 345px;
+    --align_logo: center;
+    --align_address: center;
+    --align_thank: center;
+    --fontF: FS_MCF;
+    --fontS: 14px;
+    --fontB: bold;
+    --fontI: normal;
+    color: #000;
+    word-wrap: break-word;
+    text-align: center;
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+    box-sizing: border-box;
+    outline: none;
+    border-collapse: collapse;
+    margin-top: .5rem !important;
+    width: 100%;
+    padding: 0% 1%;
+    line-height: 1;
+}
+
+/* 为Grocery模板的店铺信息表格单元格设置不换行 */
+#grocery-furniture-store-for-online-receipts .mt-2.four_td td {
+    white-space: nowrap;
+}
+
+/* 为Grocery模板的店铺信息单元格添加特定样式 */
+#grocery-furniture-store-for-online-receipts .store-info-cell {
+    text-align: left;
+    width: 33%;
+    white-space: nowrap;
+}
+
+/* 为Grocery模板产品价目表格的第一列单元格添加样式 */
+#grocery-furniture-store-for-online-receipts .product-fare-table .four_td td:first-child {
+    text-align: left;
+    width: 33%;
+}
+
+/* 为Grocery模板的票据元素添加主表格样式 */
+#grocery-furniture-store-for-online-receipts .main-template table {
+    width: 100%;
+    padding: 0% 1%;
+    line-height: 1;
+}
+
+#grocery-furniture-store-for-online-receipts {
+    border-bottom-color: rgb(128, 128, 128);
+    border-collapse: collapse;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 16px;
+    line-height: 14px;
+    margin-top: 8px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    padding-bottom: 0px;
+    padding-left: 3.125px;
+    padding-right: 3.125px;
+    padding-top: 0px;
+    text-align: center;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    width: 100%;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+/* 基本的页面设置 */
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    font-family: sans-serif;
+}
+
+/* 定义CSS变量 */
+:root {
+    --align_logo: center;
+    --align_address: center;
+    --align_thank: center;
+    --fontF: 'FS_MCF', monospace;
+    --fontS: 14px;
+    /* Default font size */
+    --fontB: normal;
+    --fontI: normal;
+}
+
+/* 票据样式 */
+.print {
+    width: 100%;
+    max-width: 380px;
+    /* 票据在屏幕上的显示宽度 */
+    margin-bottom: 2rem;
+}
+
+.card.xrt {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.card-body {
+    padding: 1.25rem;
+    flex: 1 1 auto;
+}
+
+.main-template {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+    color: #000;
+    line-height: 13px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 1px 0;
+}
+
+.logo {
+    text-align: var(--align_logo);
+}
+
+.logo img {
+    max-width: 330px;
+    width: 330px;
+    height: 78.2969px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.cityName {
+    display: inline;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 13px;
+}
+
+.address1 {
+    display: block;
+    text-align: var(--align_address);
+}
+
+.pr_barcode {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.fourTdTable {
+    width: 100%;
+}
+
+.fourTdTable .subItemTr td {
+    padding: 2px 4px;
+}
+
+.fourTdTable td:nth-child(1) {
+    width: 20%;
+}
+
+.fourTdTable td:nth-child(2) {
+    width: 50%;
+}
+
+.fourTdTable td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+
+.fourTdTable td:nth-child(4) {
+    width: 20%;
+    text-align: right;
+}
+
+.DashLine {
+    display: inline-block;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 15px !important;
+    font-family: monospace !important;
+}
+
+.thank {
+    text-align: var(--align_thank);
+}
+
+.message {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.recVcd {
+    display: block;
+    text-align: center;
+}
+
+/* 下载按钮样式 */
+#download-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#download-btn:hover {
+    background-color: #0056b3;
+}
+
+#download-btn:disabled {
+    background-color: #5a6268;
+    cursor: not-allowed;
+}
+
+/* 新增：模板选择器样式 */
+.template-selector-box {
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+}
+
+.template-selector-box label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#template-selector {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* 新增：为新模板增加的样式 */
+.four_td td {
+    width: 25%;
+    vertical-align: top;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+pre.headerLine,
+pre.comment,
+pre.message {
+    font-family: var(--fontF);
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.star {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: inline;
+    font-family: "Segoe UI";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    line-height: 10px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    text-align: right;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    text-wrap: wrap;
+    white-space-collapse: preserve;
+    width: auto;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+/* Retail模板全局字体覆盖 - 确保所有元素使用 FS_MCF 字体 */
+#retail-electronic-home-Improvements-chain-store *,
+#retail-electronic-home-Improvements-chain-store span,
+#retail-electronic-home-Improvements-chain-store td,
+#retail-electronic-home-Improvements-chain-store tr,
+#retail-electronic-home-Improvements-chain-store table,
+#retail-electronic-home-Improvements-chain-store div {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-collapse: collapse;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* General Grocery Store模板全局字体覆盖 */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts *,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts span,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts td,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts tr,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts table,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts div {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-collapse: collapse;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* Online Furniture Shop模板全局字体覆盖 */
+#online-receipts-for-furniture-shop *,
+#online-receipts-for-furniture-shop span,
+#online-receipts-for-furniture-shop td,
+#online-receipts-for-furniture-shop tr,
+#online-receipts-for-furniture-shop table,
+#online-receipts-for-furniture-shop div {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-collapse: collapse;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* 基本的页面设置 */
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    font-family: sans-serif;
+}
+
+/* 定义CSS变量 */
+:root {
+    --align_logo: center;
+    --align_address: center;
+    --align_thank: center;
+    --fontF: 'FS_MCF', monospace;
+    --fontS: 14px;
+    /* Default font size */
+    --fontB: normal;
+    --fontI: normal;
+}
+
+/* 票据样式 */
+.print {
+    width: 100%;
+    max-width: 380px;
+    /* 票据在屏幕上的显示宽度 */
+    margin-bottom: 2rem;
+}
+
+.card.xrt {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.card-body {
+    padding: 1.25rem;
+    flex: 1 1 auto;
+}
+
+.main-template {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+    color: #000;
+    line-height: 13px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 1px 0;
+}
+
+.logo {
+    text-align: var(--align_logo);
+}
+
+.logo img {
+    max-width: 330px;
+    width: 330px;
+    height: 78.2969px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.cityName {
+    display: inline;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 13px;
+}
+
+.address1 {
+    display: block;
+    text-align: var(--align_address);
+}
+
+.pr_barcode {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.fourTdTable {
+    width: 100%;
+}
+
+.fourTdTable .subItemTr td {
+    padding: 2px 4px;
+}
+
+.fourTdTable td:nth-child(1) {
+    width: 20%;
+}
+
+.fourTdTable td:nth-child(2) {
+    width: 50%;
+}
+
+.fourTdTable td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+
+.fourTdTable td:nth-child(4) {
+    width: 20%;
+    text-align: right;
+}
+
+.DashLine {
+    display: inline-block;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 15px !important;
+    font-family: monospace !important;
+}
+
+.thank {
+    text-align: var(--align_thank);
+}
+
+.message {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.recVcd {
+    display: block;
+    text-align: center;
+}
+
+/* 下载按钮样式 */
+#download-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#download-btn:hover {
+    background-color: #0056b3;
+}
+
+#download-btn:disabled {
+    background-color: #5a6268;
+    cursor: not-allowed;
+}
+
+/* 新增：模板选择器样式 */
+.template-selector-box {
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+}
+
+.template-selector-box label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#template-selector {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* 新增：为新模板增加的样式 */
+.four_td td {
+    width: 25%;
+    vertical-align: top;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+pre.headerLine,
+pre.comment,
+pre.message {
+    font-family: var(--fontF);
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+/* grocery模板完整CSS样式 - 基于1.css */
+#grocery-furniture-store-for-online-receipts #labelBodys {
+    accent-color: auto;
+    align-content: normal;
+    align-items: normal;
+    align-self: auto;
+    alignment-baseline: auto;
+    anchor-name: none;
+    animation-composition: replace;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-duration: 0s;
+    animation-fill-mode: none;
+    animation-iteration-count: 1;
+    animation-name: none;
+    animation-play-state: running;
+    animation-range-end: normal;
+    animation-range-start: normal;
+    animation-timeline: auto;
+    animation-timing-function: ease;
+    app-region: none;
+    appearance: none;
+    backdrop-filter: none;
+    backface-visibility: visible;
+    background-attachment: scroll;
+    background-blend-mode: normal;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    background-size: auto;
+    baseline-shift: 0px;
+    baseline-source: auto;
+    block-size: 817.5px;
+    border-block-end-color: rgb(0, 0, 0);
+    border-block-end-style: none;
+    border-block-end-width: 0px;
+    border-block-start-color: rgb(0, 0, 0);
+    border-block-start-style: none;
+    border-block-start-width: 0px;
+    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-collapse: separate;
+    border-end-end-radius: 0px;
+    border-end-start-radius: 0px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-inline-end-color: rgb(0, 0, 0);
+    border-inline-end-style: none;
+    border-inline-end-width: 0px;
+    border-inline-start-color: rgb(0, 0, 0);
+    border-inline-start-style: none;
+    border-inline-start-width: 0px;
+    border-left-color: rgb(0, 0, 0);
+    border-left-style: none;
+    border-left-width: 0px;
+    border-right-color: rgb(0, 0, 0);
+    border-right-style: none;
+    border-right-width: 0px;
+    border-start-end-radius: 0px;
+    border-start-start-radius: 0px;
+    border-top-color: rgb(0, 0, 0);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top-style: none;
+    border-top-width: 0px;
+    bottom: auto;
+    box-shadow: none;
+    box-sizing: border-box;
+    break-after: auto;
+    break-before: auto;
+    break-inside: auto;
+    buffered-rendering: auto;
+    caption-side: top;
+    caret-color: rgb(0, 0, 0);
+    clear: none;
+    clip: auto;
+    clip-path: none;
+    clip-rule: nonzero;
+    color: rgb(0, 0, 0);
+    color-interpolation: srgb;
+    color-interpolation-filters: linearrgb;
+    color-rendering: auto;
+    column-count: auto;
+    column-gap: normal;
+    column-rule-color: rgb(0, 0, 0);
+    column-rule-style: none;
+    column-rule-width: 0px;
+    column-span: none;
+    column-width: auto;
+    contain-intrinsic-block-size: none;
+    contain-intrinsic-height: none;
+    contain-intrinsic-inline-size: none;
+    contain-intrinsic-size: none;
+    contain-intrinsic-width: none;
+    container-name: none;
+    container-type: normal;
+    content: normal;
+    cursor: auto;
+    cx: 0px;
+    cy: 0px;
+    d: none;
+    direction: ltr;
+    display: block;
+    dominant-baseline: auto;
+    empty-cells: show;
+    field-sizing: fixed;
+    fill: rgb(0, 0, 0);
+    fill-opacity: 1;
+    fill-rule: nonzero;
+    filter: none;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: nowrap;
+    float: none;
+    flood-color: rgb(0, 0, 0);
+    flood-opacity: 1;
+    font-family: FS_MCF;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+    font-palette: normal;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-synthesis-small-caps: auto;
+    font-synthesis-style: auto;
+    font-synthesis-weight: auto;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-weight: 700;
+    grid-auto-columns: auto;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    grid-column-end: auto;
+    grid-column-start: auto;
+    grid-row-end: auto;
+    grid-row-start: auto;
+    grid-template-areas: none;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    height: 817.5px;
+    hyphenate-character: auto;
+    hyphenate-limit-chars: auto;
+    hyphens: manual;
+    image-orientation: from-image;
+    image-rendering: auto;
+    initial-letter: normal;
+    inline-size: 345px;
+    inset-area: none;
+    inset-block-end: auto;
+    inset-block-start: auto;
+    inset-inline-end: auto;
+    inset-inline-start: auto;
+    isolation: auto;
+    justify-content: normal;
+    justify-items: normal;
+    justify-self: auto;
+    left: auto;
+    letter-spacing: normal;
+    lighting-color: rgb(255, 255, 255);
+    line-break: auto;
+    line-height: 21px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: disc;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    margin-bottom: 0px;
+    margin-inline-end: 3px;
+    margin-inline-start: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 0px;
+    marker-end: none;
+    marker-mid: none;
+    marker-start: none;
+    mask-clip: border-box;
+    mask-composite: add;
+    mask-image: none;
+    mask-mode: match-source;
+    mask-origin: border-box;
+    mask-position: 0% 0%;
+    mask-repeat: repeat;
+    mask-size: auto;
+    mask-type: luminance;
+    math-depth: 0;
+    math-shift: normal;
+    math-style: normal;
+    max-block-size: none;
+    max-height: none;
+    max-inline-size: 100%;
+    max-width: 100%;
+    min-block-size: auto;
+    min-height: auto;
+    min-inline-size: auto;
+    min-width: auto;
+    mix-blend-mode: normal;
+    object-fit: fill;
+    object-position: 50% 50%;
+    object-view-box: none;
+    offset-anchor: auto;
+    offset-distance: 0px;
+    offset-path: none;
+    offset-position: normal;
+    offset-rotate: auto 0deg;
+    opacity: 1;
+    order: 0;
+    orphans: 2;
+    outline-color: rgb(128, 128, 128);
+    outline-offset: -3px;
+    outline-style: solid;
+    outline-width: 1px;
+    overflow-anchor: auto;
+    overflow-clip-margin: 0px;
+    overflow-wrap: break-word;
+    overflow-x: visible;
+    overflow-y: visible;
+    overlay: none;
+    overscroll-behavior-block: auto;
+    overscroll-behavior-inline: auto;
+    padding-block-end: 16px;
+    padding-block-start: 16px;
+    padding-bottom: 16px;
+    padding-inline-end: 16px;
+    padding-inline-start: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+    paint-order: normal;
+    perspective: none;
+    perspective-origin: 172.5px 408.75px;
+    pointer-events: auto;
+    position: static;
+    position-anchor: implicit;
+    position-try-options: none;
+    position-try-order: normal;
+    position-visibility: always;
+    r: 0px;
+    resize: none;
+    right: auto;
+    rotate: none;
+    row-gap: normal;
+    ruby-position: over;
+    rx: auto;
+    ry: auto;
+    scale: none;
+    scroll-behavior: auto;
+    scroll-margin-block-end: 0px;
+    scroll-margin-block-start: 0px;
+    scroll-margin-inline-end: 0px;
+    scroll-margin-inline-start: 0px;
+    scroll-padding-block-end: auto;
+    scroll-padding-block-start: auto;
+    scroll-padding-inline-end: auto;
+    scroll-padding-inline-start: auto;
+    scroll-timeline-axis: block;
+    scroll-timeline-name: none;
+    scrollbar-color: auto;
+    scrollbar-gutter: auto;
+    scrollbar-width: auto;
+    shape-image-threshold: 0;
+    shape-margin: 0px;
+    shape-outside: none;
+    shape-rendering: auto;
+    speak: normal;
+    stop-color: rgb(0, 0, 0);
+    stop-opacity: 1;
+    stroke: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-miterlimit: 4;
+    stroke-opacity: 1;
+    stroke-width: 1px;
+    tab-size: 8;
+    table-layout: auto;
+    text-align: center;
+    text-align-last: auto;
+    text-anchor: start;
+    text-decoration: none solid rgb(0, 0, 0);
+    text-decoration-color: rgb(0, 0, 0);
+    text-decoration-line: none;
+    text-decoration-skip-ink: auto;
+    text-decoration-style: solid;
+    text-emphasis-color: rgb(0, 0, 0);
+    text-emphasis-position: over;
+    text-emphasis-style: none;
+    text-indent: 0px;
+    text-overflow: clip;
+    text-rendering: auto;
+    text-shadow: none;
+    text-size-adjust: 100%;
+    text-spacing-trim: normal;
+    text-transform: none;
+    text-underline-position: auto;
+    text-wrap: wrap;
+    timeline-scope: none;
+    top: auto;
+    touch-action: auto;
+    transform: none;
+    transform-origin: 172.5px 408.75px;
+    transform-style: flat;
+    transition-behavior: normal;
+    transition-delay: 0s;
+    transition-duration: 0s;
+    transition-property: all;
+    transition-timing-function: ease;
+    translate: none;
+    unicode-bidi: isolate;
+    user-select: auto;
+    vector-effect: none;
+    vertical-align: baseline;
+    view-timeline-axis: block;
+    view-timeline-inset: auto;
+    view-timeline-name: none;
+    view-transition-class: none;
+    view-transition-name: none;
+    visibility: visible;
+    white-space-collapse: collapse;
+    widows: 2;
+    width: 100%;
+    will-change: auto;
+    word-break: normal;
+    word-spacing: 0px;
+    writing-mode: horizontal-tb;
+}
+
+#grocery-furniture-store-for-online-receipts div.form-group.mb-1 {
+    accent-color: auto;
+    align-content: normal;
+    align-items: normal;
+    align-self: auto;
+    alignment-baseline: auto;
+    anchor-name: none;
+    animation-composition: replace;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-duration: 0s;
+    animation-fill-mode: none;
+    animation-iteration-count: 1;
+    animation-name: none;
+    animation-play-state: running;
+    animation-range-end: normal;
+    animation-range-start: normal;
+    animation-timeline: auto;
+    animation-timing-function: ease;
+    app-region: none;
+    appearance: none;
+    backdrop-filter: none;
+    backface-visibility: visible;
+    background-attachment: scroll;
+    background-blend-mode: normal;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    background-size: auto;
+    baseline-shift: 0px;
+    baseline-source: auto;
+    block-size: 765.5px;
+    border-block-end-color: rgb(0, 0, 0);
+    border-block-end-style: none;
+    border-block-end-width: 0px;
+    border-block-start-color: rgb(0, 0, 0);
+    border-block-start-style: none;
+    border-block-start-width: 0px;
+    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-collapse: separate;
+    border-end-end-radius: 0px;
+    border-end-start-radius: 0px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-inline-end-color: rgb(0, 0, 0);
+    border-inline-end-style: none;
+    border-inline-end-width: 0px;
+    border-inline-start-color: rgb(0, 0, 0);
+    border-inline-start-style: none;
+    border-inline-start-width: 0px;
+    border-left-color: rgb(0, 0, 0);
+    border-left-style: none;
+    border-left-width: 0px;
+    border-right-color: rgb(0, 0, 0);
+    border-right-style: none;
+    border-right-width: 0px;
+    border-start-end-radius: 0px;
+    border-start-start-radius: 0px;
+    border-top-color: rgb(0, 0, 0);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top-style: none;
+    border-top-width: 0px;
+    bottom: auto;
+    box-shadow: none;
+    box-sizing: border-box;
+    break-after: auto;
+    break-before: auto;
+    break-inside: auto;
+    buffered-rendering: auto;
+    caption-side: top;
+    caret-color: rgb(0, 0, 0);
+    clear: none;
+    clip: auto;
+    clip-path: none;
+    clip-rule: nonzero;
+    color: rgb(0, 0, 0);
+    color-interpolation: srgb;
+    color-interpolation-filters: linearrgb;
+    color-rendering: auto;
+    column-count: auto;
+    column-gap: normal;
+    column-rule-color: rgb(0, 0, 0);
+    column-rule-style: none;
+    column-rule-width: 0px;
+    column-span: none;
+    column-width: auto;
+    contain-intrinsic-block-size: none;
+    contain-intrinsic-height: none;
+    contain-intrinsic-inline-size: none;
+    contain-intrinsic-size: none;
+    contain-intrinsic-width: none;
+    container-name: none;
+    container-type: normal;
+    content: normal;
+    cursor: auto;
+    cx: 0px;
+    cy: 0px;
+    d: none;
+    direction: ltr;
+    display: block;
+    dominant-baseline: auto;
+    empty-cells: show;
+    field-sizing: fixed;
+    fill: rgb(0, 0, 0);
+    fill-opacity: 1;
+    fill-rule: nonzero;
+    filter: none;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-wrap: nowrap;
+    float: none;
+    flood-color: rgb(0, 0, 0);
+    flood-opacity: 1;
+    font-family: FS_MCF;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+    font-palette: normal;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-synthesis-small-caps: auto;
+    font-synthesis-style: auto;
+    font-synthesis-weight: auto;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-weight: 700;
+    grid-auto-columns: auto;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    grid-column-end: auto;
+    grid-column-start: auto;
+    grid-row-end: auto;
+    grid-row-start: auto;
+    grid-template-areas: none;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    height: 765.5px;
+    hyphenate-character: auto;
+    hyphenate-limit-chars: auto;
+    hyphens: manual;
+    image-orientation: from-image;
+    image-rendering: auto;
+    initial-letter: normal;
+    inline-size: 313px;
+    inset-area: none;
+    inset-block-end: auto;
+    inset-block-start: auto;
+    inset-inline-end: auto;
+    inset-inline-start: auto;
+    isolation: auto;
+    justify-content: normal;
+    justify-items: normal;
+    justify-self: auto;
+    left: auto;
+    letter-spacing: normal;
+    lighting-color: rgb(255, 255, 255);
+    line-break: auto;
+    line-height: 21px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: disc;
+    margin-block-end: 4px;
+    margin-block-start: 0px;
+    margin-bottom: 4px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    marker-end: none;
+    marker-mid: none;
+    marker-start: none;
+    mask-clip: border-box;
+    mask-composite: add;
+    mask-image: none;
+    mask-mode: match-source;
+    mask-origin: border-box;
+    mask-position: 0% 0%;
+    mask-repeat: repeat;
+    mask-size: auto;
+    mask-type: luminance;
+    math-depth: 0;
+    math-shift: normal;
+    math-style: normal;
+    max-block-size: none;
+    max-height: none;
+    max-inline-size: none;
+    max-width: none;
+    min-block-size: 0px;
+    min-height: 0px;
+    min-inline-size: 0px;
+    min-width: 0px;
+    mix-blend-mode: normal;
+    object-fit: fill;
+    object-position: 50% 50%;
+    object-view-box: none;
+    offset-anchor: auto;
+    offset-distance: 0px;
+    offset-path: none;
+    offset-position: normal;
+    offset-rotate: auto 0deg;
+    opacity: 1;
+    order: 0;
+    orphans: 2;
+    outline-color: rgb(0, 0, 0);
+    outline-offset: 0px;
+    outline-style: none;
+    outline-width: 0px;
+    overflow-anchor: auto;
+    overflow-clip-margin: 0px;
+    overflow-wrap: break-word;
+    overflow-x: visible;
+    overflow-y: visible;
+    overlay: none;
+    overscroll-behavior-block: auto;
+    overscroll-behavior-inline: auto;
+    padding-block-end: 0px;
+    padding-block-start: 0px;
+    padding-bottom: 0px;
+    padding-inline-end: 0px;
+    padding-inline-start: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    paint-order: normal;
+    perspective: none;
+    perspective-origin: 156.5px 382.75px;
+    pointer-events: auto;
+    position: static;
+    position-anchor: implicit;
+    position-try-options: none;
+    position-try-order: normal;
+    position-visibility: always;
+    r: 0px;
+    resize: none;
+    right: auto;
+    rotate: none;
+    row-gap: normal;
+    ruby-position: over;
+    rx: auto;
+    ry: auto;
+    scale: none;
+    scroll-behavior: auto;
+    scroll-margin-block-end: 0px;
+    scroll-margin-block-start: 0px;
+    scroll-margin-inline-end: 0px;
+    scroll-margin-inline-start: 0px;
+    scroll-padding-block-end: auto;
+    scroll-padding-block-start: auto;
+    scroll-padding-inline-end: auto;
+    scroll-padding-inline-start: auto;
+    scroll-timeline-axis: block;
+    scroll-timeline-name: none;
+    scrollbar-color: auto;
+    scrollbar-gutter: auto;
+    scrollbar-width: auto;
+    shape-image-threshold: 0;
+    shape-margin: 0px;
+    shape-outside: none;
+    shape-rendering: auto;
+    speak: normal;
+    stop-color: rgb(0, 0, 0);
+    stop-opacity: 1;
+    stroke: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-miterlimit: 4;
+    stroke-opacity: 1;
+    stroke-width: 1px;
+    tab-size: 8;
+    table-layout: auto;
+    text-align: center;
+    text-align-last: auto;
+    text-anchor: start;
+    text-decoration: none solid rgb(0, 0, 0);
+    text-decoration-color: rgb(0, 0, 0);
+    text-decoration-line: none;
+    text-decoration-skip-ink: auto;
+    text-decoration-style: solid;
+    text-emphasis-color: rgb(0, 0, 0);
+    text-emphasis-position: over;
+    text-emphasis-style: none;
+    text-indent: 0px;
+    text-overflow: clip;
+    text-rendering: auto;
+    text-shadow: none;
+    text-size-adjust: 100%;
+    text-spacing-trim: normal;
+    text-transform: none;
+    text-underline-position: auto;
+    text-wrap: wrap;
+    timeline-scope: none;
+    top: auto;
+    touch-action: auto;
+    transform: none;
+    transform-origin: 156.5px 382.75px;
+    transform-style: flat;
+    transition-behavior: normal;
+    transition-delay: 0s;
+    transition-duration: 0s;
+    transition-property: all;
+    transition-timing-function: ease;
+    translate: none;
+    unicode-bidi: isolate;
+    user-select: auto;
+    vector-effect: none;
+    vertical-align: baseline;
+    view-timeline-axis: block;
+    view-timeline-inset: auto;
+    view-timeline-name: none;
+    view-transition-class: none;
+    view-transition-name: none;
+    visibility: visible;
+    white-space-collapse: collapse;
+    widows: 2;
+    width: 100%;
+    will-change: auto;
+    word-break: normal;
+    word-spacing: 0px;
+    writing-mode: horizontal-tb;
+    x: 0px;
+    y: 0px;
+    z-index: auto;
+    zoom: 1;
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-image: none;
+    -webkit-border-vertical-spacing: 0px;
+    -webkit-box-align: stretch;
+    -webkit-box-decoration-break: slice;
+    -webkit-box-direction: normal;
+    -webkit-box-flex: 0;
+    -webkit-box-ordinal-group: 1;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+    -webkit-box-reflect: none;
+    -webkit-font-smoothing: auto;
+    -webkit-line-break: auto;
+    -webkit-line-clamp: none;
+    -webkit-locale: "en";
+    -webkit-mask-box-image: none;
+    -webkit-mask-box-image-outset: 0;
+    -webkit-mask-box-image-repeat: stretch;
+    -webkit-mask-box-image-slice: 0 fill;
+    -webkit-mask-box-image-source: none;
+    -webkit-mask-box-image-width: auto;
+    -webkit-print-color-adjust: economy;
+    -webkit-rtl-ordering: logical;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-combine: none;
+    -webkit-text-decorations-in-effect: none;
+    -webkit-text-fill-color: rgb(0, 0, 0);
+    -webkit-text-orientation: vertical-right;
+    -webkit-text-security: none;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+    -webkit-text-stroke-width: 0px;
+    -webkit-user-drag: auto;
+    -webkit-user-modify: read-only;
+    -webkit-writing-mode: horizontal-tb;
+}
+
+#grocery-furniture-store-for-online-receipts .store-info-table td {
+    white-space: nowrap;
+}
+
+#grocery-furniture-store-for-online-receipts .four_td td:first-child {
+    white-space: nowrap;
+    text-align: left;
+    width: 33%;
+}
+
+#grocery-furniture-store-for-online-receipts .store-info-table td:first-child {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-cell;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 16px;
+    line-height: 14px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-wrap: break-word;
+    text-align: left;
+    text-indent: 0px;
+    text-size-adjust: 100%;
+    unicode-bidi: isolate;
+    vertical-align: middle;
+    width: 103.281px;
+    white-space: nowrap;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Grocery模板全局字体覆盖 - 确保所有元素使用 FS_MCF 字体 */
+#grocery-furniture-store-for-online-receipts *,
+#grocery-furniture-store-for-online-receipts span,
+#grocery-furniture-store-for-online-receipts td,
+#grocery-furniture-store-for-online-receipts tr,
+#grocery-furniture-store-for-online-receipts table,
+#grocery-furniture-store-for-online-receipts div {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-collapse: collapse;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* 为Grocery模板的ITEMS SOLD行添加特定字体样式 */
+#grocery-furniture-store-for-online-receipts .items_sold {
+    font-size: calc(var(--fontS) * 2) !important;
+    font-weight: bold !important;
+    font-family: FS_MCF !important;
+}
+
+/* 为Grocery模板的items_sold表格行添加特定样式 */
+#grocery-furniture-store-for-online-receipts tr.items_sold,
+#grocery-furniture-store-for-online-receipts tr.items_sold *,
+#grocery-furniture-store-for-online-receipts .itemnum {
+    font-family: FS_MCF !important;
+    font-size: calc(var(--fontS) * 2) !important;
+    font-weight: bold !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+}
+
+/* 为Grocery模板的fareX类和farespace类添加特定样式 */
+#grocery-furniture-store-for-online-receipts [class^='fareX'],
+#grocery-furniture-store-for-online-receipts .farespace {
+    display: inline-block;
+    width: 12px;
+}
+
+/* 为Grocery模板的fareF类添加特定样式 */
+#grocery-furniture-store-for-online-receipts [class^='fareF'] {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    display: inline-block;
+}
+
+/* 为Grocery模板的fareX9和fareX10添加特定样式 */
+#grocery-furniture-store-for-online-receipts .fareX9,
+#grocery-furniture-store-for-online-receipts .fareX10 {
+    display: inline-block;
+    width: 12px;
+}
+
+/* 为Grocery模板产品价格列设置不换行 */
+#grocery-furniture-store-for-online-receipts .four_td td.text-right {
+    white-space: nowrap;
+}
+
+/* Logo上传功能样式 */
+.logo-upload-section {
+    background-color: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.logo-upload-section:hover {
+    border-color: #007bff;
+}
+
+.logo-upload-section h4 {
+    color: #495057;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+#logo-file-input {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    margin-right: 0.5rem;
+}
+
+#upload-logo-btn:hover {
+    background-color: #218838;
+}
+
+#remove-logo-btn:hover {
+    background-color: #c82333;
+}
+
+#logo-preview {
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#logo-preview img {
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 所有模板的条形码样式 */
+.receipt-template .barcode,
+.receipt-template .pr_barcode {
+    font-family: FS_MCF !important;
+    text-align: center;
+}
+
+/* 确保所有模板的数字和文本都使用FS_MCF字体 */
+.receipt-template .currency,
+.receipt-template .comma,
+.receipt-template .rightdate,
+.receipt-template .rightnowtime,
+.receipt-template .checkintime,
+.receipt-template .enddate,
+.receipt-template .endtime {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+/* 特殊元素字体覆盖 */
+.receipt-template .message,
+.receipt-template .message1,
+.receipt-template .message2,
+.receipt-template .comment,
+.receipt-template .address1,
+.receipt-template .address2,
+.receipt-template .address3 {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+/* 确保所有模板的商品相关元素使用FS_MCF字体 */
+.receipt-template [class*="farename"],
+.receipt-template [class*="farenumber"],
+.receipt-template [class*="fareprice"],
+.receipt-template [class*="fareF"],
+.receipt-template [class*="fareX"],
+.receipt-template [class*="itemname"],
+.receipt-template [class*="itemprice"],
+.receipt-template [class*="itemF"],
+.receipt-template [class*="itemdown"],
+.receipt-template [class*="qty"] {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+/* ==================== Electronic Store Receipt Maker模板样式 ==================== */
+/* 新增模板的基础样式，使用FS_MCF字体，14px大小，不加粗 */
+
+#electronic-store-receipt-maker {
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(0, 0, 0);
+}
+
+#electronic-store-receipt-maker * {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+}
+
+/* 根据CSS代码文件的具体样式定义 */
+#electronic-store-receipt-maker div.card.xrt {
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: auto;
+    width: 366px;
+    position: relative;
+}
+
+#electronic-store-receipt-maker #labelBodys {
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    display: block;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: auto;
+    line-height: 21px;
+    margin: 3px;
+    max-width: 360px;
+    min-width: 360px;
+    outline: 1px solid rgb(128, 128, 128);
+    padding: 3px;
+    text-align: center;
+    width: 360px;
+}
+
+#electronic-store-receipt-maker div.form-group.mb-1 {
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: auto;
+    line-height: 21px;
+    margin-bottom: 4px;
+    margin-right: 6px;
+    text-align: center;
+    width: 348px;
+}
+
+#electronic-store-receipt-maker table.table-borderless.mt-3 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    margin-top: 16px;
+    padding: 3.46875px;
+    text-align: center;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker tbody {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row-group;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 4px;
+    line-height: 14px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker tr.text-center.table-header {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker td.logo {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-cell;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker table.mt-1 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 133px;
+    line-height: 14px;
+    margin-top: 4px;
+    padding: 3.46875px;
+    text-align: center;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker tr {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker td {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-cell;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker span.welcome {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: inline;
+    font-family: FS_MCF;
+    font-size: 14.35px;
+    font-weight: 400;
+    height: auto;
+    line-height: 14.35px;
+    text-align: center;
+    white-space: preserve;
+    width: auto;
+}
+
+/* Electronic Store Receipt Maker 模板完整CSS样式 - 基于用户提供的详细配置 */
+
+/* 主容器样式 */
+#electronic-store-receipt-maker div.card.xrt {
+    accent-color: auto;
+    align-content: normal;
+    align-items: normal;
+    align-self: auto;
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    height: 795.391px;
+    line-height: 24px;
+    overflow-wrap: break-word;
+    position: relative;
+    text-align: left;
+    width: 366px;
+    block-size: 795.391px;
+    inline-size: 366px;
+    -webkit-writing-mode: horizontal-tb;
+}
+
+/* Electronic Store Receipt Maker 模板 - 完全基于用户提供的详细CSS */
+
+/* 主容器 div.card.xrt */
+#electronic-store-receipt-maker div.card.xrt {
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    height: 795.391px;
+    line-height: 24px;
+    overflow-wrap: break-word;
+    position: relative;
+    text-align: left;
+    width: 366px;
+    block-size: 795.391px;
+    inline-size: 366px;
+}
+
+/* labelBodys 容器 */
+#electronic-store-receipt-maker #labelBodys {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 795.391px;
+    line-height: 21px;
+    margin: 3px;
+    max-width: 360px;
+    min-width: 360px;
+    outline: 1px solid rgb(128, 128, 128);
+    outline-offset: -3px;
+    overflow-wrap: break-word;
+    padding: 3px;
+    text-align: center;
+    width: 360px;
+    block-size: 795.391px;
+    inline-size: 360px;
+}
+
+/* 表单组容器 */
+#electronic-store-receipt-maker div.form-group.mb-1 {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 769.391px;
+    line-height: 21px;
+    margin-bottom: 4px;
+    margin-right: 6px;
+    overflow-wrap: break-word;
+    width: 348px;
+    block-size: 769.391px;
+    inline-size: 348px;
+}
+
+/* 主要表格样式 */
+#electronic-store-receipt-maker table.table-borderless.mt-3 {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    margin-left: 5.21875px;
+    margin-right: 5.23438px;
+    margin-top: 16px;
+    overflow-wrap: break-word;
+    padding-left: 3.46875px;
+    padding-right: 3.46875px;
+    text-align: center;
+    width: 337.547px;
+    block-size: 2px;
+    inline-size: 337.547px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* 表格主体 */
+#electronic-store-receipt-maker tbody {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row-group;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 4px;
+    line-height: 14px;
+    overflow-wrap: break-word;
+    text-align: center;
+    vertical-align: middle;
+    width: 337.547px;
+    block-size: 4px;
+    inline-size: 337.547px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* tr.text-center.table-header */
+#electronic-store-receipt-maker tr.text-center.table-header {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-row;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    overflow-wrap: break-word;
+    text-align: center;
+    vertical-align: middle;
+    width: 337.547px;
+    block-size: 2px;
+    inline-size: 337.547px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* Logo单元格 */
+#electronic-store-receipt-maker td.logo {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table-cell;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2px;
+    line-height: 14px;
+    overflow-wrap: break-word;
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
+    width: 337.547px;
+    block-size: 2px;
+    inline-size: 337.547px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* 第二个表格 table.mt-1 */
+#electronic-store-receipt-maker table.mt-1 {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: table;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: 133px;
+    line-height: 14px;
+    margin-bottom: 0px;
+    margin-left: 5.21875px;
+    margin-right: 5.23438px;
+    margin-top: 4px;
+    overflow-wrap: break-word;
+    padding-left: 3.46875px;
+    padding-right: 3.46875px;
+    text-align: center;
+    width: 337.547px;
+    block-size: 133px;
+    inline-size: 337.547px;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* 地址元素样式 */
+#electronic-store-receipt-maker span.address1 {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    color: rgb(0, 0, 0);
+    display: inline;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: auto;
+    line-height: 14px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-wrap: wrap;
+    white-space-collapse: preserve;
+    width: auto;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+#electronic-store-receipt-maker span.address2 {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    color: rgb(0, 0, 0);
+    display: inline;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: auto;
+    line-height: 14px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-wrap: wrap;
+    white-space-collapse: preserve;
+    width: auto;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+#electronic-store-receipt-maker span.address3 {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+    color: rgb(0, 0, 0);
+    display: inline;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: auto;
+    line-height: 14px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-wrap: wrap;
+    white-space-collapse: preserve;
+    width: auto;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* 欢迎信息样式 */
+#electronic-store-receipt-maker span.welcome {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: inline;
+    font-family: FS_MCF;
+    font-size: 14px;
+    font-weight: 400;
+    height: auto;
+    line-height: 14px;
+    text-align: center;
+    white-space-collapse: preserve;
+    width: auto;
+}
+
+/* 全局元素统一样式 - 确保所有元素使用 FS_MCF 字体 */
+#electronic-store-receipt-maker *,
+#electronic-store-receipt-maker span,
+#electronic-store-receipt-maker td,
+#electronic-store-receipt-maker tr,
+#electronic-store-receipt-maker table,
+#electronic-store-receipt-maker div {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-collapse: collapse;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+}
+
+/* Electronic Store Receipt Maker 模板最终样式覆盖 */
+
+/* 所有元素的字体覆盖 - 强制使用 FS_MCF */
+#electronic-store-receipt-maker * {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+}
+
+/* 确保主容器字体不被通配符影响 */
+#electronic-store-receipt-maker div.card.xrt {
+    font-family: Poppins, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
+/* 重要：确保所有子元素都使用FS_MCF字体 */
+#electronic-store-receipt-maker #labelBodys,
+#electronic-store-receipt-maker #labelBodys *,
+#electronic-store-receipt-maker div.form-group.mb-1,
+#electronic-store-receipt-maker div.form-group.mb-1 * {
+    font-family: FS_MCF !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+}
+
+#electronic-store-receipt-maker .electronic-store-info-table {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #868e96;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #868e96;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --pwidth: 360px;
+    --align_logo: center;
+    --align_address: center;
+    --align_thank: center;
+    --fontF: FS_MCF;
+    --fontS: 14px;
+    --fontB: normal;
+    --fontI: normal;
+    color: #000;
+    word-wrap: break-word;
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+    box-sizing: border-box;
+    outline: none;
+    border-collapse: collapse;
+    text-align: left !important;
+    padding: 0% 1%;
+    line-height: 1;
+    width: 97%;
+    margin: auto;
+}
+
+#electronic-store-receipt-maker .electronic-store-info-table td {
+    text-align: left !important;
+}
+
+#electronic-store-receipt-maker .PitemSub td {
+    white-space: nowrap !important;
+}
+
+#grocery-furniture-store-for-online-receipts .store-info-table td {
+    white-space: nowrap;
+}
+
+/* ==================== Electronic Store Receipt Maker模板样式 ==================== */
+#electronic-store-receipt-maker .card.xrt {
+    width: 366px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+#electronic-store-receipt-maker .lblBody {
+    padding: 3px;
+    outline: rgb(128, 128, 128) solid 1px;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    /* Allow body to grow and shrink */
+    min-height: min-content;
+}
+
+#electronic-store-receipt-maker .form-group {
+    margin-right: 6px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#electronic-store-receipt-maker .table-borderless {
+    margin-top: 1rem !important;
+    max-height: none !important;
+    /* 确保高度根据内容自适应 */
+}
+
+#electronic-store-receipt-maker .mt-1 {
+    margin-top: 4px !important;
+}
+
+#electronic-store-receipt-maker .PitemSub {
+    width: 97%;
+}
+
+#electronic-store-receipt-maker .PitemSub td,
+#electronic-store-receipt-maker .PitemSub span {
+    white-space: nowrap !important;
+}
+
+#electronic-store-receipt-maker .electronic-store-info-table {
+    width: 97%;
+    margin: auto;
+    text-align: left !important;
+}
+
+#electronic-store-receipt-maker .electronic-store-info-table td {
+    text-align: left !important;
+}
+
+#electronic-store-receipt-maker table {
+    padding: 0 1%;
+    line-height: 1;
+}
+
+/* 移除之前添加的过于宽泛的规则 */
+
+#grocery-furniture-store-for-online-receipts .store-info-table td {
+    white-space: nowrap;
+}
+
+/* ==================== Electronic Store Receipt Maker模板样式 ==================== */
+
+/* --- 从 common_store_for_new_templates1.css 和 electronic-store-receipt-maker1.css 提取并适配的核心样式 --- */
+#electronic-store-receipt-maker .main-template {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+    color: #000;
+}
+
+#electronic-store-receipt-maker .lblBody {
+    min-width: 360px;
+    max-width: 360px;
+    margin: 3px;
+    padding: 3px;
+    outline: 1px solid #808080;
+    outline-offset: -3px;
+    text-align: center;
+}
+
+#electronic-store-receipt-maker .form-group {
+    margin-right: 6px;
+}
+
+#electronic-store-receipt-maker .table-borderless {
+    margin-top: 1rem !important;
+}
+
+#electronic-store-receipt-maker .mt-1 {
+    margin-top: .25rem !important;
+}
+
+#electronic-store-receipt-maker table {
+    width: 97%;
+    margin: auto;
+    padding: 0 1%;
+    line-height: 1;
+}
+
+#electronic-store-receipt-maker .text-left {
+    text-align: left !important;
+}
+
+#electronic-store-receipt-maker .PitemSub td {
+    white-space: nowrap !important;
+}
+
+#electronic-store-receipt-maker .pr-3 {
+    padding-right: 1rem !important;
+}
+
+#electronic-store-receipt-maker .text-right {
+    text-align: right !important;
+}
+
+#electronic-store-receipt-maker .totalDash,
+#electronic-store-receipt-maker .subtotalDash {
+    letter-spacing: -2px;
+}
+
+/* 移除之前添加的所有相关规则 */
+
+#grocery-furniture-store-for-online-receipts .store-info-table td {
+    white-space: nowrap;
+}
+
+/* ==================== Retail Electronic/Home Improvements Chain Store模板样式 ==================== */
+/* ... existing code ... */
+#grocery-furniture-store-for-online-receipts .store-info-table td {
+    white-space: nowrap;
+}
+
+/* ==================== Electronic Store Receipt Maker模板样式 (源网站样式) ==================== */
+
+/* --- Core variables and template container --- */
+#electronic-store-receipt-maker {
+    --fontF: 'Segoe UI';
+    --fontS: 14px;
+    --fontB: normal;
+    --fontI: normal;
+    --pwidth: 360px;
+    --align_logo: center;
+    --align_address: center;
+    --align_thank: center;
+}
+
+#electronic-store-receipt-maker .main-template {
+    max-width: var(--pwidth);
+    min-width: var(--pwidth);
+    outline: 1px solid gray;
+    padding: 3px;
+    outline-offset: -3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-align: center;
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+    color: #000;
+}
+
+#electronic-store-receipt-maker .lblBody {
+    min-width: 360px;
+    max-width: 360px;
+    margin: 3px;
+    padding: 3px;
+    outline: 1px solid #808080;
+    outline-offset: -3px;
+    text-align: center;
+    height: auto !important;
+}
+
+/* --- Typography --- */
+#electronic-store-receipt-maker p {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+}
+
+#electronic-store-receipt-maker .main-template span {
+    white-space: pre-wrap;
+    color: black;
+}
+
+#electronic-store-receipt-maker .welcome {
+    font-size: calc(var(--fontS) * 1.025);
+}
+
+#electronic-store-receipt-maker .print_header {
+    font-size: calc(var(--fontS) * 1.2)
+}
+
+#electronic-store-receipt-maker .message,
+#electronic-store-receipt-maker .comment {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    color: black;
+    margin-bottom: 0px !important;
+    line-height: 1.2;
+    white-space: pre-wrap !important;
+}
+
+#electronic-store-receipt-maker pre {
+    overflow: hidden;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* --- Alignment and Layout --- */
+#electronic-store-receipt-maker .logo {
+    text-align: var(--align_logo);
+}
+
+#electronic-store-receipt-maker .Paddress {
+    text-align: var(--align_address);
+}
+
+#electronic-store-receipt-maker .thank_dis {
+    text-align: var(--align_thank);
+}
+
+
+#electronic-store-receipt-maker .main-template table {
+    padding: 0% 1%;
+    line-height: 1;
+    width: 97%;
+    margin: auto;
+}
+
+#electronic-store-receipt-maker .item .remove_div {
+    border-bottom: 1px dashed gray;
+}
+
+#electronic-store-receipt-maker .card {
+    border: none !important;
+}
+
+#electronic-store-receipt-maker .space {
+    height: 12px;
+}
+
+/* --- Table Cell specifics --- */
+#electronic-store-receipt-maker .pr_both td:first-child {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .pr_both td:nth-child(2) {
+    text-align: right;
+}
+
+#electronic-store-receipt-maker .pr_third td:first-child,
+#electronic-store-receipt-maker .pr_third td:nth-child(2),
+#electronic-store-receipt-maker .pr_third td:nth-child(3) {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .four_td td:first-child {
+    text-align: left;
+    width: 33%;
+}
+
+#electronic-store-receipt-maker .four_td td:nth-child(2) {
+    text-align: left;
+    width: 34%;
+}
+
+#electronic-store-receipt-maker .four_td td:nth-child(3) {
+    text-align: left;
+    width: 8%;
+}
+
+#electronic-store-receipt-maker .four_td td:nth-child(4) {
+    text-align: right;
+    width: 25%;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(2) {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(3) {
+    text-align: left;
+    /* width: 35%; */
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(4) {
+    text-align: right;
+    white-space: nowrap;
+    /* width:30%; */
+}
+
+/* --- Specific Element Styles --- */
+#electronic-store-receipt-maker .logo img {
+    width: auto;
+    max-width: 280px;
+    height: auto;
+    max-height: 280px;
+}
+
+#electronic-store-receipt-maker .thank {
+    width: 95%;
+}
+
+#electronic-store-receipt-maker [class^="faredown"] {
+    padding-left: 24px;
+    padding-bottom: 0;
+    line-height: 1 !important;
+    /* 直接作用于单元格以覆盖默认行高 */
+}
+
+#electronic-store-receipt-maker .star {
+    font-size: 10px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    color: black;
+}
+
+#electronic-store-receipt-maker .dash {
+    font-size: 12px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    height: 10px;
+}
+
+#electronic-store-receipt-maker .subtotalDash,
+#electronic-store-receipt-maker .totalDash {
+    display: inline-block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-family: monospace !important;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    font-size: 15px !important;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .itemBT {
+    width: 22%;
+    padding: 3px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 500px) {
+    #electronic-store-receipt-maker .itemBT {
+        margin-top: 5px;
+        width: 50%;
+    }
+}
+
+#electronic-store-receipt-maker .itemTable {
+    padding: 0% 1%;
+    line-height: 1;
+}
+
+#electronic-store-receipt-maker .item .remove_div {
+    border-bottom: 1px dashed gray;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(4) {
+    text-align: right;
+}
+
+#electronic-store-receipt-maker .itemTable>tbody>tr>td {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1 !important;
+    /* 直接作用于单元格以覆盖默认行高 */
+}
+
+/* --- Specific Element Styles --- */
+#electronic-store-receipt-maker .logo img {
+    width: auto;
+}
+
+#electronic-store-receipt-maker .card.xrt {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    /* 确保高度根据内容自适应 */
+}
+
+/* =================================================================================
+   STYLES FOR alectronic-store-receipt-maker TEMPLATE - ADDED BY AI
+   ================================================================================= */
+
+#electronic-store-receipt-maker,
+#electronic-store-receipt-maker:root {
+    /* address  */
+    --fontF: 'Segoe UI';
+    --fontS: 14px;
+    --fontB: normal;
+    --fontI: normal;
+}
+
+#electronic-store-receipt-maker body {
+    font-size: 16px;
+}
+
+#electronic-store-receipt-maker .form-group {
+    margin-bottom: 0.35rem;
+}
+
+#electronic-store-receipt-maker .header_text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#electronic-store-receipt-maker .section_header {
+    font-size: 18px;
+}
+
+#electronic-store-receipt-maker button,
+#electronic-store-receipt-maker .fas {
+    cursor: pointer;
+}
+
+#electronic-store-receipt-maker button:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* left side start */
+#electronic-store-receipt-maker .form-group.row {
+    margin-bottom: 5px;
+    line-height: 16px;
+}
+
+#electronic-store-receipt-maker .align {
+    border: 1px solid gray;
+    border-radius: 0.25rem;
+    justify-content: space-around;
+}
+
+#electronic-store-receipt-maker .align .fas {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#electronic-store-receipt-maker .align .fas:hover {
+    background-color: gray;
+    font-size: 24px;
+}
+
+#electronic-store-receipt-maker .custom-control-label::before {
+    top: -3px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+#electronic-store-receipt-maker .custom-control-label::after {
+    top: 0;
+    left: -22px;
+}
+
+#electronic-store-receipt-maker .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+#electronic-store-receipt-maker .upload-btn-wrapper .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#electronic-store-receipt-maker .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+#electronic-store-receipt-maker main.my-form.row {
+    margin: 60px 0 60px;
+}
+
+#electronic-store-receipt-maker .cust-styl .form-group textarea {
+    width: 100%;
+    margin: 15px 0 0 0;
+}
+
+#electronic-store-receipt-maker .cust-styl .btn {
+    margin: 0 0 24px 0;
+}
+
+#electronic-store-receipt-maker .cust-styl .remove_picture {
+    position: relative;
+    top: -19px;
+}
+
+#electronic-store-receipt-maker .card.bdr {
+    border: 1px solid rgba(0, 0, 0, .125) !important;
+}
+
+#electronic-store-receipt-maker [id^="add"] {
+    width: 30px;
+    cursor: pointer;
+}
+
+#electronic-store-receipt-maker [id^="add"]:hover {
+    opacity: 0.5;
+}
+
+#electronic-store-receipt-maker label[for="am_type"] {
+    font-size: 14px;
+    word-break: break-all;
+}
+
+#electronic-store-receipt-maker .form-group textarea {
+    border: 1px solid #ced4da;
+}
+
+#electronic-store-receipt-maker .div_top_border {
+    border-top: 1px solid gray;
+}
+
+#electronic-store-receipt-maker .down_content {
+    display: none;
+}
+
+#electronic-store-receipt-maker .addcontent:not(.tax)>div:first-of-type .remove {
+    visibility: hidden;
+}
+
+#electronic-store-receipt-maker .addcontent>.remove_div .itemDesCon:nth-of-type(2) .Tremove {
+    visibility: hidden;
+}
+
+#electronic-store-receipt-maker .addcontent>div:first-of-type {
+    border-top: none;
+}
+
+#electronic-store-receipt-maker .remove {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#electronic-store-receipt-maker .addDescription,
+#electronic-store-receipt-maker .Tremove {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#electronic-store-receipt-maker .remove:hover,
+#electronic-store-receipt-maker .addDescription:hover,
+#electronic-store-receipt-maker .Tremove:hover {
+    color: darkgrey;
+}
+
+/* left side end  */
+
+/* print side start*/
+
+#electronic-store-receipt-maker .print {
+    padding-top: 500px;
+}
+
+/* fontsection  */
+#electronic-store-receipt-maker .message,
+#electronic-store-receipt-maker .comment {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    color: black;
+    margin-bottom: 0px !important;
+    line-height: 1.2;
+    white-space: pre-wrap !important;
+}
+
+#electronic-store-receipt-maker .print_header {
+    font-size: calc(var(--fontS) * 1.2)
+}
+
+/* align section  */
+#electronic-store-receipt-maker .logo {
+    text-align: var(--align_logo);
+}
+
+#electronic-store-receipt-maker .Paddress {
+    text-align: var(--align_address);
+}
+
+#electronic-store-receipt-maker .thank_dis {
+    text-align: var(--align_thank);
+}
+
+#electronic-store-receipt-maker .main-template table {
+    padding: 0% 1%;
+    line-height: 1;
+}
+
+#electronic-store-receipt-maker .thank {
+    width: 95%;
+}
+
+#electronic-store-receipt-maker .main-template span {
+    white-space: pre-wrap;
+    color: black;
+}
+
+#electronic-store-receipt-maker .logo img {
+    width: auto;
+    max-width: 280px;
+    height: auto;
+    max-height: 280px;
+}
+
+/* @@@pr_both class:: this is often used for table(that hat 2 td field) in this group template  */
+#electronic-store-receipt-maker .pr_both td:first-child {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .pr_both td:nth-child(2) {
+    text-align: right;
+}
+
+#electronic-store-receipt-maker .pr_third td:first-child {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .pr_third td:nth-child(2) {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .pr_third td:nth-child(3) {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .four_td td:first-child {
+    text-align: left;
+    width: 33%;
+}
+
+#electronic-store-receipt-maker .four_td td:nth-child(2) {
+    text-align: left;
+    width: 34%;
+}
+
+#electronic-store-receipt-maker .four_td td:nth-child(3) {
+    text-align: left;
+    width: 8%;
+}
+
+#electronic-store-receipt-maker .four_td td:nth-child(4) {
+    text-align: right;
+    width: 25%;
+}
+
+#electronic-store-receipt-maker [class^="faredown"] {
+    padding-left: 24px;
+}
+
+#electronic-store-receipt-maker .star {
+    font-size: 10px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    color: black;
+}
+
+#electronic-store-receipt-maker .card {
+    border: none !important;
+}
+
+#electronic-store-receipt-maker .dash {
+    font-size: 12px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    height: 10px;
+}
+
+#electronic-store-receipt-maker .space {
+    height: 12px;
+}
+
+#electronic-store-receipt-maker pre {
+    overflow: hidden;
+}
+
+#electronic-store-receipt-maker .item .remove_div {
+    border-bottom: 1px dashed gray;
+}
+
+/* print side end  */
+/* responsive Start */
+@media screen and (max-width:500px) {
+    #electronic-store-receipt-maker .in_logo {
+        flex-direction: column;
+        align-items: baseline !important;
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    #electronic-store-receipt-maker .print {
+        padding-top: 100px;
+    }
+}
+
+@media screen and (max-width:345px) {
+    #electronic-store-receipt-maker .left {
+        padding: 0px;
+    }
+
+    #electronic-store-receipt-maker .cust-styl .form-group {
+        padding: 0px;
+    }
+
+    #electronic-store-receipt-maker .left .card-body {
+        padding: 7px;
+    }
+
+    #electronic-store-receipt-maker .res_flex_form {
+        flex-direction: column;
+    }
+
+    #electronic-store-receipt-maker .res_flex_form>*:first-child {
+        margin-bottom: 5px;
+    }
+
+    #electronic-store-receipt-maker .comma-currency {
+        flex-direction: column;
+    }
+
+    #electronic-store-receipt-maker .comma-currency>div {
+        width: 100%;
+    }
+
+    #electronic-store-receipt-maker .item>.remove_div:first-child .remove {
+        display: none;
+    }
+
+    #electronic-store-receipt-maker .addcontent>.remove_div .itemDesCon:nth-of-type(2) .Tremove {
+        display: none;
+    }
+
+    #electronic-store-receipt-maker .itemBT {
+        margin-top: 5px;
+        width: 70%;
+    }
+}
+
+/* responsive End */
+
+#electronic-store-receipt-maker .call-to-action {
+    margin-top: 50px !important;
+}
+
+#electronic-store-receipt-maker .owl-exampleOne .overlay h1 {
+    font-size: 37px;
+    line-height: 50px;
+    color: #fff;
+    text-shadow: 0px 2px 5px #000;
+}
+
+#electronic-store-receipt-maker .content-center {
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/*video sec*/
+#electronic-store-receipt-maker .video-sec {
+    padding-top: 70px;
+}
+
+#electronic-store-receipt-maker .video-dtl {
+    padding: 15px 0 45px;
+}
+
+#electronic-store-receipt-maker .banner-video {
+    position: relative;
+    z-index: 9999;
+}
+
+#electronic-store-receipt-maker .video-box {
+    height: 270px;
+}
+
+@media(max-width:1169) {
+    #electronic-store-receipt-maker .owl-exampleOne .overlay h1 {
+        font-size: 25px;
+        line-height: 35px;
+    }
+}
+
+@media(max-width:991px) {
+    #electronic-store-receipt-maker .owl-exampleOne .overlay h1 {
+        font-size: 22px;
+        line-height: 27px;
+    }
+
+    #electronic-store-receipt-maker .banner-video {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+}
+
+@media(max-width:767px) {
+
+    #electronic-store-receipt-maker .banner-video {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    #electronic-store-receipt-maker .col-md-6.banner-video-sec {
+        height: 170px;
+        margin-top: 15px;
+    }
+
+    #electronic-store-receipt-maker .overlay {
+        padding: 0 10px;
+    }
+}
+
+/* All other CSS files combined and prefixed below */
+
+/* electronic-store-receipt-maker1.css */
+#electronic-store-receipt-maker:root {
+    /* print side width  */
+    --pwidth: 360px;
+}
+
+#electronic-store-receipt-maker .main-template {
+    max-width: var(--pwidth);
+    min-width: var(--pwidth);
+    outline: 1px solid gray;
+    padding: 3px;
+    outline-offset: -3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-align: center;
+    /* font section  */
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+}
+
+#electronic-store-receipt-maker .welcome {
+    font-size: calc(var(--fontS) * 1.025);
+}
+
+#electronic-store-receipt-maker p {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+}
+
+#electronic-store-receipt-maker .main-template .form-group table {
+    width: 97%;
+    margin: auto;
+}
+
+#electronic-store-receipt-maker .itemBT {
+    width: 22%;
+    padding: 3px;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(2) {
+    text-align: left;
+    width: 35%;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(3) {
+    text-align: left;
+    white-space: nowrap;
+    /* width:35%; */
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(4) {
+    text-align: right;
+    white-space: nowrap;
+    /* width:30%; */
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: inline-block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 15px !important;
+    font-family: monospace !important;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    display: inline-block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 14px !important;
+    font-family: monospace !important;
+}
+
+@media screen and (max-width:500px) {
+    #electronic-store-receipt-maker .res_flex_form {
+        flex-direction: column;
+    }
+
+    #electronic-store-receipt-maker .res_flex_form>* {
+        margin-bottom: 5px;
+    }
+
+    #electronic-store-receipt-maker .item>.remove_div:first-child .remove {
+        display: none;
+    }
+
+    #electronic-store-receipt-maker .addcontent>.remove_div .itemDesCon:nth-of-type(2) .Tremove {
+        display: none;
+    }
+
+    #electronic-store-receipt-maker .itemBT {
+        margin-top: 5px;
+        width: 50%;
+    }
+}
+
+/* global.css */
+#electronic-store-receipt-maker,
+#electronic-store-receipt-maker h1,
+#electronic-store-receipt-maker h2,
+#electronic-store-receipt-maker h3,
+#electronic-store-receipt-maker h4,
+#electronic-store-receipt-maker h5,
+#electronic-store-receipt-maker h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+#electronic-store-receipt-maker {
+    background: rgba(165, 178, 182, 0.1);
+    color: #000;
+    font-weight: 400;
+    height: auto;
+    min-height: auto;
+    padding: 0;
+}
+
+#electronic-store-receipt-maker .hide-scrollbar {
+    overflow: -moz-hidden-unscrollable;
+    overflow: hidden;
+}
+
+#electronic-store-receipt-maker .disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+#electronic-store-receipt-maker .margin-btm-10 {
+    margin-bottom: 10px;
+}
+
+#electronic-store-receipt-maker .howToUse {
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+#electronic-store-receipt-maker .howToUse ul {
+    padding: 10px 25px;
+}
+
+#electronic-store-receipt-maker .howToUse li {
+    list-style: disc;
+    line-height: 28px;
+    letter-spacing: 0.6px;
+}
+
+#electronic-store-receipt-maker ul li {
+    line-height: 1.571;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#electronic-store-receipt-maker .container {
+    max-width: 1170px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#electronic-store-receipt-maker .container .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#electronic-store-receipt-maker ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#electronic-store-receipt-maker li {
+    list-style: none;
+}
+
+#electronic-store-receipt-maker a {
+    text-decoration: none;
+    color: #000;
+    transition: 300ms all;
+}
+
+#electronic-store-receipt-maker a:hover,
+#electronic-store-receipt-maker a:focus,
+#electronic-store-receipt-maker button:focus {
+    transition: 300ms all;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.9;
+}
+
+#electronic-store-receipt-maker *,
+#electronic-store-receipt-maker button,
+#electronic-store-receipt-maker a,
+#electronic-store-receipt-maker img {
+    outline: none;
+}
+
+#electronic-store-receipt-maker button:focus {
+    outline: none;
+}
+
+#electronic-store-receipt-maker p {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: #616161;
+    line-height: 1.6;
+    margin: 0;
+    letter-spacing: 0.5px;
+    word-spacing: 2px;
+}
+
+#electronic-store-receipt-maker h5 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#electronic-store-receipt-maker .lef {
+    margin-left: 0;
+}
+
+#electronic-store-receipt-maker .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+#electronic-store-receipt-maker .input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 3px 5px;
+    letter-spacing: 0.6px;
+    font-size: 13px;
+    width: 100%;
+}
+
+#electronic-store-receipt-maker .cus-btn {
+    padding: 7px 20px;
+    color: #fff;
+    border-radius: 5px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+}
+
+#electronic-store-receipt-maker .cus-btn:hover {
+    color: #fff;
+    opacity: 0.9;
+}
+
+#electronic-store-receipt-maker .login-btn {
+    background: #017bff;
+    width: 300px;
+}
+
+#electronic-store-receipt-maker .btn-facebook {
+    background: #3b5999;
+}
+
+#electronic-store-receipt-maker .btn-amazon {
+    background: #232f3e;
+}
+
+#electronic-store-receipt-maker .btn-google {
+    background: #d74937;
+}
+
+#electronic-store-receipt-maker .modal-popup .modal-footer {
+    justify-content: center;
+}
+
+#electronic-store-receipt-maker .modal-popup .modal-header {
+    background: rgba(0, 123, 255, 0.09);
+    padding-left: 35px;
+}
+
+#electronic-store-receipt-maker .modal-popup .modal-title {
+    width: 100%;
+    text-align: center;
+    font-size: 27px;
+}
+
+#electronic-store-receipt-maker .modal-popup .modal-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+#electronic-store-receipt-maker .modal-popup h6 {
+    font-size: 20px;
+    color: #2e4967;
+}
+
+/* sidebar-toggle.css */
+#electronic-store-receipt-maker .chosse-inr {
+    width: 60px;
+    min-width: 60px;
+}
+
+#electronic-store-receipt-maker .chosse-inr h3 {
+    display: none;
+}
+
+#electronic-store-receipt-maker .chosse-inr a {
+    font-size: 0;
+}
+
+#electronic-store-receipt-maker .toggle-hide {
+    display: none;
+}
+
+#electronic-store-receipt-maker .toggle-hide {
+    display: none;
+}
+
+#electronic-store-receipt-maker .main-template table {
+    padding: 0% 1%;
+    line-height: 1;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(4) {
+    text-align: right;
+    white-space: nowrap;
+    /* width:30%; */
+}
+
+#electronic-store-receipt-maker .itemTable>tbody>tr>td {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1;
+    /* 直接作用于单元格以覆盖默认行高 */
+}
+
+/* 调整商品信息行的高度和行高 */
+#electronic-store-receipt-maker .PitemSub td {
+    height: 16px;
+    line-height: 16px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    vertical-align: middle;
+}
+
+/* --- Specific Element Styles --- */
+#electronic-store-receipt-maker .logo img {
+    width: auto;
+}
+
+/* 隐藏商品信息中的空白间隔行 */
+#electronic-store-receipt-maker .PitemSub tr[class^="PitemSubLast"] {
+    display: none;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: inline-block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-family: monospace !important;
+}
+
+/* 再次缩小商品信息行的高度 */
+#electronic-store-receipt-maker .PitemSub td {
+    line-height: 12px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: inline-block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-family: monospace !important;
+}
+
+#grocery-furniture-store-for-online-receipts .card.xrt {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+}
+
+#electronic-store-receipt-maker .card.xrt {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+#electronic-store-receipt-maker .card-body {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+#electronic-store-receipt-maker .main-template {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+#grocery-furniture-store-for-online-receipts .card-body {
+    padding: 24px;
+}
+
+#electronic-store-receipt-maker .lblBody {
+    max-width: var(--pwidth);
+    min-width: var(--pwidth);
+    outline: 1px solid gray;
+    padding: 3px;
+    outline-offset: -3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-align: center;
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    font-weight: var(--fontB);
+    font-style: var(--fontI);
+}
+
+
+/* Electronic Store 模板自适应高度样式 */
+/* 让JavaScript动态调整margin-bottom生效，移除!important限制 */
+#electronic-store-receipt-maker .form-group.mb-1 {
+    height: auto !important;
+    min-height: auto !important;
+    /* margin-bottom 由JavaScript动态控制 */
+}
+
+/* 确保有Logo时也有合适的间距 - 降低优先级让JS控制 */
+#electronic-store-receipt-maker .form-group.mb-1:has(.logo img[src]:not([src=""])) {
+    margin-bottom: 1rem;
+}
+
+/* 兼容性方案：针对具体的Logo存在状态 - 降低优先级让JS控制 */
+#electronic-store-receipt-maker .form-group.mb-1:has(.logo img[src*="data:"]) {
+    margin-bottom: 1rem;
+}
+
+#electronic-store-receipt-maker .form-group.mb-1:has(.logo img[src*="logo/"]) {
+    margin-bottom: 1rem;
+}
+
+/* JavaScript辅助方案：使用CSS类控制margin-bottom - 降低优先级让JS控制 */
+#electronic-store-receipt-maker .form-group.mb-1.has-logo {
+    margin-bottom: 1rem;
+}
+
+#electronic-store-receipt-maker .form-group.mb-1.no-logo {
+    margin-bottom: 0;
+}
+
+/* 确保Electronic Store模板的条形码可见 */
+#electronic-store-receipt-maker .pr_barcode {
+    text-align: center;
+    padding: 10px 0;
+    display: table-row !important;
+    visibility: visible !important;
+}
+
+#electronic-store-receipt-maker .pr_barcode td {
+    text-align: center;
+    padding: 5px 0;
+    visibility: visible !important;
+}
+
+#electronic-store-receipt-maker .barcode {
+    display: block !important;
+    width: 354px !important;
+    height: 45px !important;
+    background: #ffffff !important;
+    border: none !important;
+    outline: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0 auto !important;
+}
+
+/* 强制覆盖内联样式 */
+#electronic-store-receipt-maker .barcode[style*="height: 45px"] {
+    height: 70px !important;
+}
+
+#electronic-store-receipt-maker .barcode svg[style*="height: 45px"] {
+    height: 70px !important;
+}
+
+#electronic-store-receipt-maker .barcode svg {
+    display: block !important;
+    width: 354px !important;
+    height: 70px !important;
+    background: #ffffff !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#electronic-store-receipt-maker .barcode rect {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    /* This was the issue */
+}
+
+/* 强制所有容器高度自适应 */
+#electronic-store-receipt-maker,
+#electronic-store-receipt-maker * {
+    /*height: auto !important; */
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* 但保持表格的正常显示 */
+#electronic-store-receipt-maker table {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+#electronic-store-receipt-maker .form-group {
+    height: auto;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#electronic-store-receipt-maker .lblBody {
+    font-family: 'receipt-font', monospace;
+    font-size: var(--fontS);
+    color: #000;
+    width: var(--width);
+    margin: 0 auto;
+    background: #fff;
+    padding: 24px 24px 0 24px;
+    height: auto;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(2) {
+    text-align: left;
+    width: 25%;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(3) {
+    text-align: left;
+    width: 35%;
+}
+
+#electronic-store-receipt-maker .PitemSub tr td:nth-child(4) {
+    text-align: right;
+    width: 30%;
+}
+
+#electronic-store-receipt-maker .logo img {
+    width: auto;
+    max-width: 280px;
+    height: auto;
+    max-height: 280px;
+}
+
+#electronic-store-receipt-maker .subtotalDash,
+.totalDash {
+    letter-spacing: -2px;
+    font-family: monospace !important;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: inline-block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 15px !important;
+    font-family: monospace !important;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(2) {
+    text-align: left;
+    width: 25%;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(3) {
+    text-align: left;
+    width: 35%;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(4) {
+    text-align: right;
+    width: 30%;
+}
+
+#electronic-store-receipt-maker .logo img {
+    width: auto;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-family: monospace !important;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    display: block;
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(2) {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .barcode[style*="height: 45px"] {
+    height: 45px !important;
+}
+
+#electronic-store-receipt-maker .barcode svg {
+    display: block !important;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 15px !important;
+    font-family: monospace !important;
+    text-align: right;
+    word-break: break-all;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .subtotalDash,
+.totalDash {
+    letter-spacing: -2px;
+    font-family: monospace !important;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 15px !important;
+    font-family: monospace !important;
+    text-align: right;
+    word-break: break-all;
+}
+
+#electronic-store-receipt-maker .subtotalDash+span {
+    display: block;
+    text-align: right;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(2) {
+    text-align: left;
+    width: 25%;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(3) {
+    text-align: left;
+    width: 35%;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(4) {
+    text-align: right;
+    width: 30%;
+}
+
+#electronic-store-receipt-maker .logo img {
+    width: auto;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: block;
+    width: 120px;
+    height: 10px;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-family: monospace !important;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    display: block;
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(2) {
+    text-align: left;
+}
+
+#electronic-store-receipt-maker .barcode[style*="height: 45px"] {
+    height: 45px !important;
+}
+
+#electronic-store-receipt-maker .barcode svg {
+    display: block !important;
+}
+
+#electronic-store-receipt-maker .subtotalDash {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    letter-spacing: -4px;
+    font-size: 15px !important;
+    font-family: monospace !important;
+    text-align: right;
+    word-break: break-all;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .totalDash {
+    display: block;
+    width: 100%;
+    text-align: right;
+    word-break: break-all;
+    font-size: 14px !important;
+}
+
+#electronic-store-receipt-maker .totalDash+span {
+    display: block;
+    text-align: right;
+}
+
+#electronic-store-receipt-maker .Pitem .PitemSub tr td:nth-child(2) {
+    text-align: left;
+    width: 25%;
+}
+
+/* ==================== Online Receipts for Furniture Shop 样式 ==================== */
+
+#online-receipts-for-furniture-shop {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+#online-receipts-for-furniture-shop * {
+    line-height: 1.2;
+}
+
+#online-receipts-for-furniture-shop p {
+    margin: 0;
+    padding: 0;
+}
+
+#online-receipts-for-furniture-shop .main-template table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#online-receipts-for-furniture-shop .logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 280px;
+    max-height: 125px;
+    object-fit: contain;
+}
+
+#online-receipts-for-furniture-shop .three_td {
+    width: 100%;
+}
+
+#online-receipts-for-furniture-shop .three_td td:nth-child(1) {
+    width: 10%;
+    text-align: left;
+}
+
+#online-receipts-for-furniture-shop .three_td td:nth-child(2) {
+    width: 70%;
+    text-align: left;
+}
+
+#online-receipts-for-furniture-shop .three_td td:nth-child(3) {
+    width: 20%;
+    text-align: right;
+}
+
+#online-receipts-for-furniture-shop .pr_both td:first-child {
+    text-align: left;
+    width: 50%;
+}
+
+#online-receipts-for-furniture-shop .pr_both td:nth-child(2) {
+    text-align: right;
+    width: 50%;
+}
+
+#online-receipts-for-furniture-shop .three_td tr:nth-child(2) td:nth-child(2) {
+    text-align: left;
+    width: 70%;
+}
+
+#online-receipts-for-furniture-shop .three_td tr:nth-child(2) td:nth-child(3) {
+    text-align: right;
+    width: 20%;
+}
+
+#online-receipts-for-furniture-shop .space {
+    height: 12px;
+    line-height: 12px;
+}
+
+#online-receipts-for-furniture-shop .currency {
+    font-weight: normal;
+}
+
+#online-receipts-for-furniture-shop .comma {
+    font-weight: normal;
+}
+
+#online-receipts-for-furniture-shop .barcode {
+    display: block;
+    margin: 0 auto;
+    background: white;
+}
+
+#online-receipts-for-furniture-shop .message {
+    font-family: var(--fontF);
+    font-size: var(--fontS);
+    color: black;
+    margin-bottom: 0px !important;
+    line-height: 1.5;
+    white-space: pre-wrap !important;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#online-receipts-for-furniture-shop .items_sold {
+    text-align: center;
+    font-size: calc(var(--fontS) * 2) !important;
+    font-weight: bold !important;
+    font-family: FS_MCF !important;
+}
+
+/* 为所有模板的items_sold表格行添加特定样式 */
+#retail-electronic-home-Improvements-chain-store tr.items_sold,
+#retail-electronic-home-Improvements-chain-store tr.items_sold *,
+#retail-electronic-home-Improvements-chain-store .itemnum,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts tr.items_sold,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts tr.items_sold *,
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .itemnum,
+#online-receipts-for-furniture-shop tr.items_sold,
+#online-receipts-for-furniture-shop tr.items_sold *,
+#online-receipts-for-furniture-shop .itemnum {
+    font-family: FS_MCF !important;
+    font-size: calc(var(--fontS) * 2) !important;
+    font-weight: bold !important;
+    color: rgb(0, 0, 0) !important;
+    line-height: 14px !important;
+}
+
+#online-receipts-for-furniture-shop .card {
+    border: none;
+    width: 342px;
+}
+
+#online-receipts-for-furniture-shop .print_header {
+    font-weight: normal;
+    font-size: calc(var(--fontS) * 1.2);
+}
+
+#online-receipts-for-furniture-shop .w-75 {
+    width: 75%;
+}
+
+#online-receipts-for-furniture-shop .cash {
+    display: table-row;
+}
+
+#online-receipts-for-furniture-shop .Paddress td {
+    text-align: center;
+}
+
+#online-receipts-for-furniture-shop .address1,
+#online-receipts-for-furniture-shop .address2,
+#online-receipts-for-furniture-shop .address3 {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#online-receipts-for-furniture-shop .farespace {
+    display: inline-block;
+    width: 1ch;
+}
+
+#online-receipts-for-furniture-shop .text-left {
+    text-align: left !important;
+}
+
+#online-receipts-for-furniture-shop .text-right {
+    text-align: right !important;
+}
+
+#online-receipts-for-furniture-shop .text-center {
+    text-align: center !important;
+}
+
+#online-receipts-for-furniture-shop .mt-2 {
+    margin-top: .5rem !important;
+}
+
+#online-receipts-for-furniture-shop .my-2 {
+    margin-top: .5rem !important;
+    margin-bottom: .5rem !important;
+}
+
+#online-receipts-for-furniture-shop .added_content {
+    display: table-tbody;
+}
+
+#online-receipts-for-furniture-shop .Pfare .remove_tr {
+    display: table-row;
+}
+
+#online-receipts-for-furniture-shop .cash td {
+    padding: 1px 0;
+}
+
+#grocery-furniture-store-for-online-receipts .store-info-table td {
+    white-space: nowrap;
+}
+
+#grocery-furniture-store-for-online-receipts .four_td td:first-child {
+    white-space: normal;
+    word-break: break-word;
+    text-align: left;
+    width: 50%;
+}
+
+#grocery-furniture-store-for-online-receipts .store-info-table td:first-child {
+    width: 33%;
+}
+
+#online-receipts-for-furniture-shop .cash td {
+    padding: 1px 0;
+}
+
+#grocery-furniture-store-for-online-receipts .product-fare-table .four_td td:first-child {
+    white-space: normal !important;
+    word-break: break-word;
+}
+
+/* 模板4：商品名称居左对齐 */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts [class*="itemname"] {
+    text-align: left;
+}
+
+/* 模板4：特定支付信息居左对齐 */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .pr_both .cash td:first-child {
+    text-align: left;
+}
+
+/* 模板2：增加底部感谢与日期信息的间距 */
+#grocery-furniture-store-for-online-receipts .mx-0.w-100.text-center.mb-1 .thank_dis td,
+#grocery-furniture-store-for-online-receipts .mx-0.w-100.text-center.mb-1 .thank_dis+tr td {
+    padding-top: 5px;
+}
+
+/* 模板4：增加商品行之间的间距 */
+#general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts .Pitem .remove_tr {
+    padding-top: 10px;
+}
