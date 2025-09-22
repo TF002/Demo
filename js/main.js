@@ -499,10 +499,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         await populateReceiptByTemplate(rowData, selectedTemplate);
 
                         // 使用 requestAnimationFrame 确保在下一次绘制时才截图
-                        // 修复：如果 generateReceiptCanvas 抛错，必须 reject，否则会导致永远 pending 而“卡住”
+                        // 修复：如果 generateReceiptCanvas 抛错，必须 reject，否则会导致永远 pending 而"卡住"
+                        // 批量生成也使用安全模式，避免 tainted canvas 错误
                         const canvas = await new Promise((resolve, reject) => {
                             requestAnimationFrame(() => {
-                                generateReceiptCanvas()
+                                generateReceiptCanvasSafe()
                                     .then(resolve)
                                     .catch((err) => {
                                         console.error('生成Canvas失败:', err);
