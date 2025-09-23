@@ -591,10 +591,11 @@ async function populateGeneralGroceryReceipt(data) {
     // --- 动态处理商品和计算 ---
     let subtotal = 0;
     for (let i = 1; i <= 10; i++) { // 循环10个商品
-        const nameCol = XLSX.utils.encode_col(7 + (i - 1) * 4);  // H, L, P...
-        const descCol = XLSX.utils.encode_col(8 + (i - 1) * 4);  // I, M, Q...
-        const priceCol = XLSX.utils.encode_col(9 + (i - 1) * 4); // J, N, R...
-        const tagCol = XLSX.utils.encode_col(10 + (i - 1) * 4);  // K, O, S...
+        const nameCol = XLSX.utils.encode_col(7 + (i - 1) * 5);  // H, L, P...
+        const descCol = XLSX.utils.encode_col(8 + (i - 1) * 5);  // I, M, Q...
+        const priceCol = XLSX.utils.encode_col(9 + (i - 1) * 5); // J, N, R...
+        const upcCol = XLSX.utils.encode_col(10 + (i - 1) * 5);  // K, O, S...
+        const tagCol = XLSX.utils.encode_col(11 + (i - 1) * 5);  // K, O, S...
 
         // --- 新增调试代码 ---
         if (i === 5) {
@@ -626,7 +627,7 @@ async function populateGeneralGroceryReceipt(data) {
     const total = subtotal + taxValue;
 
     template.querySelector('.subtotal').textContent = subtotal.toFixed(2);
-    template.querySelector('.taxname1').textContent = data['AV'] || 'Tax'; // 税费标签从 AV 列读取
+    // template.querySelector('.taxname1').textContent = data['AV'] || 'Tax'; // 税费标签从 AV 列读取
     template.querySelector('.taxprice1').textContent = taxValue.toFixed(2);
     template.querySelector('.total').textContent = total.toFixed(2);
     template.querySelector('.totalceil').textContent = total.toFixed(2);
@@ -651,18 +652,18 @@ async function populateGeneralGroceryReceipt(data) {
 
     // BA列: 映射到 message1
     const message1El = template.querySelector('.message1');
-    if (message1El) message1El.textContent = data['BA'] || "Together, we'll get through this COVID-19 Situation.";
+    if (message1El) message1El.textContent = data['BJ'] || "Together, we'll get through this COVID-19 Situation.";
 
     // BB列: 映射到 message2
     const message2El = template.querySelector('.message2');
-    if (message2El) message2El.textContent = data['BB'] || '★★★ CUSTOMER COPY ★★★';
+    if (message2El) message2El.textContent = '★★★ CUSTOMER COPY ★★★';
 
     // --- 处理Logo (假设为BC列) ---
     const logoImg = template.querySelector('.logo img');
     console.log('data123,BC', data);
-    const logoFilename = data['BC'];
+    const logoFilename = data['BK'];
     if (logoFilename) {
-        logoImg.src = `./logo/${logoFilename}`;
+        logoImg.src = `./${logoFilename}`;
         logoImg.style.display = 'inline';
     } else {
         // 如果没有提供logo，可以隐藏img标签或显示占位符
@@ -991,6 +992,22 @@ async function populateElectronicStoreReceipt(data) {
     template.querySelector('.address2').textContent = data['F'] || '';
     template.querySelector('.address3').textContent = data['G'] || '';
 
+      function generateNumberGroups() {
+        let groups = [];
+        for (let i = 0; i < 3; i++) {
+            // 生成 0~9999 的随机数，补足 4 位
+            let group = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            groups.push(group);
+        }
+        return groups.join(' ');
+    }
+
+
+    template.querySelector('.val1').textContent = generateNumberGroups();
+    template.querySelector('.val2').textContent = Math.floor(1000000 + Math.random() * 900000);
+
+
+
     // --- 动态处理商品和计算 ---
     let subtotal = 0;
     for (let i = 1; i <= 10; i++) {
@@ -1010,11 +1027,11 @@ async function populateElectronicStoreReceipt(data) {
             const row = itemRows[i - 1];
             if (row) {
                 row.style.display = 'table-row';
-                row.querySelector(`.itemCouponA${i}`).textContent = data[couponACol] || '';
-                row.querySelector(`.itemCouponB${i}`).textContent = data[couponBCol] || '';
-                row.querySelector(`.item${i}_Description1`).textContent = itemDesc;
+                row.querySelector(`.itemCouponA${i}`).textContent = data[couponBCol] || '';
+                row.querySelector(`.itemCouponB${i}`).textContent = data[tagCol] || '';
+                row.querySelector(`.item${i}_Description1`).textContent = data[couponACol] || '';
                 row.querySelector(`.itemprice${i}`).textContent = itemPrice.toFixed(2);
-                row.querySelector(`.itemBT${i}`).textContent = data[tagCol] || 'N';
+                row.querySelector(`.itemBT${i}`).textContent = data[descCol] || 'N';
                 subtotal += itemPrice;
             }
         }
