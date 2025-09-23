@@ -663,7 +663,7 @@ async function populateGeneralGroceryReceipt(data) {
     console.log('data123,BC', data);
     const logoFilename = data['BK'];
     if (logoFilename) {
-        logoImg.src = `./${logoFilename}`;
+        logoImg.src = `./logo/${logoFilename}`;
         logoImg.style.display = 'inline';
     } else {
         // 如果没有提供logo，可以隐藏img标签或显示占位符
@@ -793,7 +793,7 @@ async function populateRetailReceipt(data) {
     console.log('data123,BB', data);
 
     if (logoFilename) {
-        logoImg.src = `./${logoFilename}`;
+        logoImg.src = `./logo/${logoFilename}`;
         logoImg.style.display = 'inline';
         logoImg.parentElement.style.display = 'table-cell';
     } else {
@@ -835,7 +835,7 @@ async function populateGroceryReceipt(data) {
     console.log('data123,BF', data);
 
     if (logoFilename) {
-        logoImg.src = `./${logoFilename}`;
+        logoImg.src = `./logo/${logoFilename}`;
         logoImg.style.display = 'inline';
     } else {
         logoImg.style.display = 'none';
