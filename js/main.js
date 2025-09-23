@@ -549,6 +549,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 根据模板类型调用相应的数据填充函数
 async function populateReceiptByTemplate(data, templateType) {
+    console.log('当前模版--',templateType)
     // 根据模板类型选择不同的填充函数
     if (templateType === 'retail-electronic-home-Improvements-chain-store') {
         await populateRetailReceipt(data);
@@ -568,7 +569,7 @@ async function populateGeneralGroceryReceipt(data) {
     // 获取当前模板的 DOM 元素
     const template = document.getElementById('general-grocery-store-template-for-food-grocery-meat-juices-and-bread-receipts');
     if (!template) return;
-
+    console.log('template',template)
     // --- 清理旧数据 ---
     // 隐藏所有商品行并清除内容
     const itemRows = template.querySelectorAll('.added_content.Pitem .remove_tr');
@@ -674,7 +675,7 @@ async function populateRetailReceipt(data) {
     const templateId = 'retail-electronic-home-Improvements-chain-store';
     const template = document.getElementById(templateId);
     if (!template) return;
-
+    console.log('template1',template)
     // --- 清理旧数据 ---
     const itemRows = template.querySelectorAll('.Pitem .remove_tr');
     itemRows.forEach(row => {
@@ -688,33 +689,47 @@ async function populateRetailReceipt(data) {
         }
     });
 
-    // --- 填充静态数据 ---
+    console.log('itemRows',itemRows,'data',data)
+
+    // // --- 填充静态数据 ---
+    // 时间
     template.querySelector('.checkindate').textContent = formatExcelDate(data['A']) || '';
     template.querySelector('.checkintime').textContent = formatExcelTime(data['B']) || '';
+    
     template.querySelector('.address1').textContent = data['E'] || '';
     template.querySelector('.address2').textContent = data['F'] || '';
     template.querySelector('.address3').textContent = data['G'] || '';
     template.querySelector('.cityName').textContent = data['H'] || '';
-    // I 列不再映射到 .recVcd
+    // // I 列不再映射到 .recVcd
 
     // --- 动态处理商品和计算 ---
     let subtotal = 0;
     // 商品从第 I 列 (索引 8) 开始，每组 4 列
     for (let i = 1; i <= 10; i++) {
-        // I=8, J=9, K=10, L=11
+        // I=8, J=9, K=10, L=11 priceCol
+        const nameCol = XLSX.utils.encode_col(7 + (i - 1) * 4);
         const codeCol = XLSX.utils.encode_col(8 + (i - 1) * 4);
-        const nameCol = XLSX.utils.encode_col(9 + (i - 1) * 4);
+        const priceCol = XLSX.utils.encode_col(9 + (i - 1) * 4);
         const typeCol = XLSX.utils.encode_col(10 + (i - 1) * 4);
-        const priceCol = XLSX.utils.encode_col(11 + (i - 1) * 4);
 
         const itemName = data[nameCol];
         const itemPrice = parseFloat(data[priceCol]);
+        console.log(3333,{
+            codeCol,
+            nameCol,
+            typeCol,
+            priceCol,
+            itemPrice,
+            itemName
+        })
 
         if (itemName && !isNaN(itemPrice)) {
             const row = itemRows[i - 1];
+            console.log('row22',row)
             if (row) {
                 row.style.display = 'table-row';
                 const cells = row.querySelectorAll('.subItemTr td');
+                console.log('cells',cells)
                 cells[0].querySelector('span').textContent = data[codeCol] || '';
                 cells[1].querySelector('span').textContent = itemName;
                 cells[2].querySelector('span').textContent = data[typeCol] || '';
@@ -724,8 +739,8 @@ async function populateRetailReceipt(data) {
         }
     }
 
-    // --- 计算和填充总计 ---
-    const taxValue = parseFloat(data['AZ']) || 0;
+    // // --- 计算和填充总计 ---
+    const taxValue = parseFloat(data['AV']) || 0;
     const total = subtotal + taxValue;
 
     // --- 使用更安全的方式更新总计 ---
@@ -736,37 +751,48 @@ async function populateRetailReceipt(data) {
     }
 
     // Tax
-    const taxLabelElement = template.querySelector('#taxLabel');
-    if (taxLabelElement) {
-        taxLabelElement.textContent = data['AY'] || 'TAX';
-    }
+    // const taxLabelElement = template.querySelector('#taxLabel');
+    // if (taxLabelElement) {
+    //     taxLabelElement.textContent = data['AY'] || 'TAX';
+    // }
     const taxValueElement = template.querySelector('#taxValue');
     if (taxValueElement) {
         taxValueElement.textContent = taxValue.toFixed(2);
     }
 
-    // Total & Charge Total - 第三个table用于总计
-    const totalTable = template.querySelectorAll('table')[4]; // 第五个table
-    if (totalTable) {
-        const totalElements = totalTable.querySelectorAll('td[style*="width:30%"] span:last-child');
-        if (totalElements.length >= 2) {
-            totalElements[0].textContent = total.toFixed(2); // TOTAL
-            totalElements[1].textContent = total.toFixed(2); // VISA CHARGE
-        }
+    const totalval2 = template.querySelector('#totalval2');
+    if (totalval2) {
+        totalval2.textContent = total.toFixed(2);
     }
+
+     const totalval1 = template.querySelector('#totalval1');
+    if (totalval1) {
+        totalval1.textContent = total.toFixed(2);
+    }
+
+    // // Total & Charge Total - 第三个table用于总计
+    // const totalTable = template.querySelectorAll('table')[4]; // 第五个table
+    // if (totalTable) {
+    //     // const totalElements = totalTable.querySelectorAll('td[style*="width:30%"] span:last-child');
+    //     // console.log('totalElements',totalElements)
+    //     // if (totalElements.length >= 2) {
+    //     //     totalElements[0].textContent = total.toFixed(2); // TOTAL
+    //     //     totalElements[1].textContent = total.toFixed(2); // VISA CHARGE
+    //     // }
+    // }
 
     // --- 填充支付和消息 ---
     template.querySelector('#cardType').textContent = data['AW'] || '';
     template.querySelector('#cardLastFour').textContent = data['AX'] || '';
-    template.querySelector('.message').textContent = data['BA'] || '';
+    template.querySelector('.message').textContent = data['AY'] || '';
 
     // --- 处理Logo ---
     const logoImg = template.querySelector('.logo img');
-    const logoFilename = data['BB'];
+    const logoFilename = data['AZ'];
     console.log('data123,BB', data);
 
     if (logoFilename) {
-        logoImg.src = `./logo/${logoFilename}`;
+        logoImg.src = `./${logoFilename}`;
         logoImg.style.display = 'inline';
         logoImg.parentElement.style.display = 'table-cell';
     } else {
@@ -869,7 +895,7 @@ async function populateGroceryReceipt(data) {
     // BE列：✯✯✯ CUSTOMER COPY ✯✯✯
     const messageElement = template.querySelector('.message');
     if (messageElement) {
-        messageElement.textContent = data['BE'] || '✯✯✯ CUSTOMER COPY ✯✯✯';
+        messageElement.textContent = data['AZ'] || '✯✯✯ CUSTOMER COPY ✯✯✯';
     }
 
     // --- 更新售卖商品数量 ---
