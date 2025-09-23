@@ -820,102 +820,150 @@ async function populateGroceryReceipt(data) {
     });
 
     // --- 填充静态数据 ---
-    template.querySelector('.enddate').textContent = formatExcelDate(data['A']) || '';
-    template.querySelector('.endtime').textContent = formatExcelTime(data['B'], false) || '';
+    // template.querySelector('.enddate').textContent = formatExcelDate(data['A']) || '';
+    // template.querySelector('.endtime').textContent = formatExcelTime(data['B'], false) || '';
     template.querySelector('.address1').textContent = data['F'] || '';
     template.querySelector('.address2').textContent = data['G'] || '';
     template.querySelector('.address3').textContent = data['H'] || '';
+    template.querySelector('#creadId1').textContent = data['E'] || '';
+
+     // --- 处理Logo（调整后的列映射） ---
+    // BF列：logo
+    const logoImg = template.querySelector('.logo img');
+    const logoFilename = data['BV'];
+    console.log('data123,BF', data);
+
+    if (logoFilename) {
+        logoImg.src = `./${logoFilename}`;
+        logoImg.style.display = 'inline';
+    } else {
+        logoImg.style.display = 'none';
+    }
 
     // --- 动态处理商品和计算 ---
     let subtotal = 0;
     let lastItemIndex = -1;
     for (let i = 1; i <= 10; i++) {
         // I=8, J=9, K=10, L=11
-        const nameCol = XLSX.utils.encode_col(8 + (i - 1) * 4);
-        const numberCol = XLSX.utils.encode_col(9 + (i - 1) * 4);
-        const priceCol = XLSX.utils.encode_col(10 + (i - 1) * 4); // K列 - 价格
-        const tagCol = XLSX.utils.encode_col(11 + (i - 1) * 4);   // L列 - 标签'X'
+        const nameCol = XLSX.utils.encode_col(8 + (i - 1) * 6);
+        // const numberCol = XLSX.utils.encode_col(9 + (i - 1) * 6);
+        const priceCol = XLSX.utils.encode_col(10 + (i - 1) * 6); // K列 - 价格
+        const tagCol = XLSX.utils.encode_col(11 + (i - 1) * 6);   // L列 - 标签'X'
+        const upcCode = XLSX.utils.encode_col(12 + (i - 1) * 6);   // M列 - upc码
+        const priceTag = XLSX.utils.encode_col(13 + (i - 1) * 6);   // N列 - 钱标
 
         const itemName = data[nameCol];
         const itemPrice = parseFloat(data[priceCol]);
+
+        console.log(3333333,{
+            nameCol,
+            // numberCol,
+            priceCol,
+            tagCol,
+            itemName,
+            itemPrice,
+            upcCode,
+            priceTag
+        })
 
         if (itemName && !isNaN(itemPrice)) {
             const row = itemRows[i - 1];
             if (row) {
                 row.style.display = 'table-row';
                 row.querySelector(`.farename${i}`).textContent = itemName;
-                row.querySelector(`.farenumber${i}`).textContent = data[numberCol] || '';
+                row.querySelector(`.fareF${i}`).textContent = data[tagCol] || '';
+                row.querySelector(`.farenumber${i}`).textContent = data[upcCode] || '';
                 row.querySelector(`.fareprice${i}`).textContent = itemPrice.toFixed(2);
+                row.querySelector(`.fareX${i}`).textContent = data[priceTag] || '';
 
-                // 根据用户的描述，L列是'X'标签，对应 .fareX{i}
-                const tagElement = row.querySelector(`.fareX${i}`);
-                if (tagElement) {
-                    tagElement.textContent = data[tagCol] || 'X';
-                }
+                // // 根据用户的描述，L列是'X'标签，对应 .fareX{i}
+                // const tagElement = row.querySelector(`.fareX${i}`);
+                // if (tagElement) {
+                //     tagElement.textContent = data[tagCol] || 'X';
+                // }
 
                 subtotal += itemPrice;
                 lastItemIndex = i;
             }
         }
     }
+    template.querySelector('.subtotal').textContent = subtotal.toFixed(2);
+    template.querySelector('.taxpro1').textContent = data['BQ'] || '0.00';
+    template.querySelector('.taxprice1').textContent = data['BR'] || '0.00';
 
-    // 处理商品描述
-    const itemDescription = data['AW'];
-    if (itemDescription && lastItemIndex !== -1) {
-        const descSpan = template.querySelector(`.faredown${lastItemIndex}`);
-        if (descSpan) {
-            descSpan.textContent = itemDescription;
-            descSpan.closest('.down_content').style.display = 'table-row';
-        }
-    }
 
-    // --- 计算和填充总计 ---
-    const taxValue = parseFloat(data['AZ']) || 0;
+    // // 处理商品描述
+    // const itemDescription = data['AW'];
+    // if (itemDescription && lastItemIndex !== -1) {
+    //     const descSpan = template.querySelector(`.faredown${lastItemIndex}`);
+    //     if (descSpan) {
+    //         descSpan.textContent = itemDescription;
+    //         descSpan.closest('.down_content').style.display = 'table-row';
+    //     }
+    // }
+
+    // // --- 计算和填充总计 ---
+    const taxValue = parseFloat(data['BR']) || 0;
     const total = subtotal + taxValue;
 
-    template.querySelector('.subtotal').textContent = subtotal.toFixed(2);
-    template.querySelector('.taxname1').textContent = data['AX'] || 'TAX';
-    template.querySelector('.taxpro1').textContent = data['AY'] || '0.00';
-    template.querySelector('.taxprice1').textContent = taxValue.toFixed(2);
+    // template.querySelector('.subtotal').textContent = subtotal.toFixed(2);
+    // template.querySelector('.taxname1').textContent = data['AX'] || 'TAX';
+    // template.querySelector('.taxpro1').textContent = data['AY'] || '0.00';
+    // template.querySelector('.taxprice1').textContent = taxValue.toFixed(2);
     template.querySelector('.total').textContent = total.toFixed(2);
     template.querySelector('.tend').textContent = total.toFixed(2);
 
-    // --- 填充支付和消息 ---
-    template.querySelector('.swipe').textContent = data['BA'] || '';
-    template.querySelector('.lastnumber').textContent = data['BB'] || '';
-    template.querySelector('.approval').textContent = data['BC'] || '';
+    // // --- 填充支付和消息 ---
+    template.querySelector('.swipe').textContent = data['BS'] || '';
+    template.querySelector('.lastnumber').textContent = data['BT'] || '';
+    template.querySelector('.approval').textContent =  Math.floor(100000 + Math.random() * 900000);
+    template.querySelector('.ref').textContent =  Math.floor(100000000000 + Math.random() * 900000);
+    template.querySelector('.terminal').textContent =  Math.floor(1000000000 + Math.random() * 900000);
 
-    // --- 填充消息（调整后的列映射） ---
-    // BD列：Thank You for Shopping With Us!
-    const commentElement = template.querySelector('.comment');
-    if (commentElement) {
-        commentElement.textContent = data['BD'] || 'Thank You for Shopping With Us!';
-    }
+    // // --- 填充消息（调整后的列映射） ---
+    // // BD列：Thank You for Shopping With Us!
+    // const commentElement = template.querySelector('.comment');
+    // if (commentElement) {
+    //     commentElement.textContent = data['BD'] || 'Thank You for Shopping With Us!';
+    // }
 
-    // BE列：✯✯✯ CUSTOMER COPY ✯✯✯
-    const messageElement = template.querySelector('.message');
-    if (messageElement) {
-        messageElement.textContent = data['AZ'] || '✯✯✯ CUSTOMER COPY ✯✯✯';
-    }
+    // // BE列：✯✯✯ CUSTOMER COPY ✯✯✯
+    // const messageElement = template.querySelector('.message');
+    // if (messageElement) {
+    //     messageElement.textContent = data['AZ'] || '✯✯✯ CUSTOMER COPY ✯✯✯';
+    // }
 
-    // --- 更新售卖商品数量 ---
+    // // --- 更新售卖商品数量 ---
     const itemsSoldElement = template.querySelector('.itemnum');
     if (itemsSoldElement) {
         itemsSoldElement.textContent = lastItemIndex > 0 ? lastItemIndex : 0;
     }
 
-    // --- 处理Logo（调整后的列映射） ---
-    // BF列：logo
-    const logoImg = template.querySelector('.logo img');
-    const logoFilename = data['BF'];
-    console.log('data123,BF', data);
-
-    if (logoFilename) {
-        logoImg.src = `./logo/${logoFilename}`;
-        logoImg.style.display = 'inline';
-    } else {
-        logoImg.style.display = 'none';
+    function generateNumberGroups() {
+        let groups = [];
+        for (let i = 0; i < 5; i++) {
+            // 生成 0~9999 的随机数，补足 4 位
+            let group = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            groups.push(group);
+        }
+        return groups.join(' ');
     }
+
+    template.querySelector('.barvalue').textContent =  generateNumberGroups();
+
+
+    // // --- 处理Logo（调整后的列映射） ---
+    // // BF列：logo
+    // const logoImg = template.querySelector('.logo img');
+    // const logoFilename = data['BF'];
+    // console.log('data123,BF', data);
+
+    // if (logoFilename) {
+    //     logoImg.src = `./logo/${logoFilename}`;
+    //     logoImg.style.display = 'inline';
+    // } else {
+    //     logoImg.style.display = 'none';
+    // }
 }
 
 // Electronic Store Receipt Maker模板数据填充函数

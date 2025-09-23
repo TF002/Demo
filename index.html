@@ -394,7 +394,7 @@ Please Come Again</pre>
         <!-- 模板 2: Grocery (新增模板) -->
         <div class="print receipt-template" id="grocery-furniture-store-for-online-receipts" style="display:none;">
             <div class="card xrt">
-                <div class="card-body main-template lblBody" id="labelBodys">
+                <div class="card-body main-template lblBody" >
                     <div class="form-group mb-1">
                         <!-- text-right -->
                         <table class="table-borderless mt-3">
@@ -402,13 +402,13 @@ Please Come Again</pre>
                                 <tr>
                                     <td>
                                         <pre class="headerLine mb-0 text-left">Give us feedback 
-Thank you! ID #: 79DSFXCWFGH2384B</pre>
+Thank you! ID #: <span id="creadId1">79DSFXCWFGH2384B</span></pre>
                                     </td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 <tr class="text-center table-header">
-                                    <td class="logo"><img src="./assets/img/logo-placeholder.png"></td>
+                                    <td class="logo"><img style="width: auto;" src="./assets/img/logo-placeholder.png"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -443,13 +443,20 @@ Thank you! ID #: 79DSFXCWFGH2384B</pre>
                                         <table class="four_td">
                                             <tbody>
                                                 <tr>
-                                                    <td><span class="farename1" data-right="Item Name">Energy
-                                                            Drink</span></td>
-                                                    <td><span class="farenumber1">049726593100</span></td>
-                                                    <td><span class="fareF1" data-right="">F</span></td>
-                                                    <td class="text-right"><span class="currency">$</span><span
-                                                            class="fareprice1 comma" data-right="0.00">26.99</span><span
-                                                            class="fareX1" data-right="X">X</span></td>
+                                                    <td>
+                                                        <span class="farename1" data-right="Item Name">Energy Drink</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="farenumber1">049726593100</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="fareF1" data-right="">F</span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="currency">$</span>
+                                                        <span class="fareprice1 comma" data-right="0.00">26.99</span>
+                                                        <span class="fareX1" data-right="X">X</span>
+                                                    </td>
                                                 </tr>
                                                 <tr class="down_content">
                                                     <td colspan="4"><span class="faredown1" data-right=""></span></td>
@@ -725,17 +732,13 @@ Thank you! ID #: 79DSFXCWFGH2384B</pre>
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="space">
-                        </p>
                         <table>
                             <tbody>
-                                <tr class="items_sold">
+                                <tr class="items_sold" style="height: 44px;">
                                     <td><span># ITEMS SOLD </span><span class="itemnum">8</span></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="space">
-                        </p>
                         <table class="mx-0 w-100 text-center mb-1">
                             <tbody>
                                 <tr>
