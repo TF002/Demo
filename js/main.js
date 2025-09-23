@@ -697,10 +697,10 @@ async function populateRetailReceipt(data) {
     template.querySelector('.checkindate').textContent = formatExcelDate(data['A']) || '';
     template.querySelector('.checkintime').textContent = formatExcelTime(data['B']) || '';
     
-    template.querySelector('.address1').textContent = data['E'] || '';
-    template.querySelector('.address2').textContent = data['F'] || '';
-    template.querySelector('.address3').textContent = data['G'] || '';
-    template.querySelector('.cityName').textContent = data['H'] || '';
+    template.querySelector('.address1').textContent = data['F'] || '';
+    template.querySelector('.address2').textContent = data['G'] || '';
+    template.querySelector('.address3').textContent = data['BA'] || '';
+    template.querySelector('.cityName').textContent = data['E'] || '';
     // // I 列不再映射到 .recVcd
 
     // --- 动态处理商品和计算 ---
