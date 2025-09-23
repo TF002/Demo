@@ -176,12 +176,13 @@ async function generateCanvasForTemplateSafe(receiptElement) {
     const temporarilyHiddenElements = [];
 
     if (isFileProtocol) {
-        console.log('检测到file://环境，启用安全模式：隐藏所有图片和背景');
+        console.log('检测到file://环境，启用安全模式：保留data URL图片，隐藏其他图片');
         
-        // 隐藏所有img元素
+        // 隐藏所有img元素，但保留data URL和blob URL格式的图片（如上传的Logo）
         const allImages = receiptElement.querySelectorAll('img');
         allImages.forEach(img => {
-            if (img.style.display !== 'none') {
+            const isDataUrl = img.src && (img.src.startsWith('data:') || img.src.startsWith('blob:'));
+            if (!isDataUrl && img.style.display !== 'none') {
                 temporarilyHiddenElements.push({ el: img, display: img.style.display });
                 img.style.display = 'none';
             }
@@ -215,10 +216,13 @@ async function generateCanvasForTemplateSafe(receiptElement) {
             backgroundColor: '#ffffff',
             logging: true,
             onclone: (clonedDoc) => {
-                // 在克隆文档中也确保无图片
+                // 在克隆文档中也确保无图片，但保留data URL格式的图片
                 if (isFileProtocol) {
                     clonedDoc.querySelectorAll('img').forEach(img => { 
-                        img.style.display = 'none'; 
+                        const isDataUrl = img.src && (img.src.startsWith('data:') || img.src.startsWith('blob:'));
+                        if (!isDataUrl) {
+                            img.style.display = 'none'; 
+                        }
                     });
                     clonedDoc.querySelectorAll('*').forEach(el => {
                         el.style.backgroundImage = 'none';
