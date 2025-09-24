@@ -770,6 +770,21 @@ async function populateRetailReceipt(data) {
     if (totalval1) {
         totalval1.textContent = total.toFixed(2);
     }
+    function generateRandomNumber2(length) {
+        if (length <= 0) return '';
+        let firstDigit = Math.floor(Math.random() * 9) + 1;
+        if (length === 1) return firstDigit.toString();
+        let restOfDigits = Array.from({ length: length - 1 }, () => Math.floor(Math.random() * 10)).join('');
+        return firstDigit + restOfDigits;
+    }
+
+    const recVcdElement = document.querySelector('.recVcd');
+    if (recVcdElement) {
+        const recPart = `REC#${generateRandomNumber2(1)}-${generateRandomNumber2(4)}-${generateRandomNumber2(4)}-${generateRandomNumber2(4)}-${generateRandomNumber2(4)}-${generateRandomNumber2(1)}`;
+        const vcdPart = `VCD#${generateRandomNumber2(3)}-${generateRandomNumber2(3)}-${generateRandomNumber2(3)}`;
+        recVcdElement.textContent = `${recPart} ${vcdPart}`;
+    }
+
 
     // // Total & Charge Total - 第三个table用于总计
     // const totalTable = template.querySelectorAll('table')[4]; // 第五个table
@@ -888,10 +903,9 @@ async function populateGroceryReceipt(data) {
             }
         }
     }
-    console.log('44444',data['BQ'])
     template.querySelector('.subtotal').textContent = subtotal.toFixed(2);
-    template.querySelector('.taxpro1').textContent = data['BQ'] * 100 || '0.00';
-    template.querySelector('.taxprice1').textContent = data['BR'] || '0.00';
+    template.querySelector('.taxpro1').textContent = (data['BQ'] * 100).toFixed(2) || '0.00';
+    template.querySelector('.taxprice1').textContent = (data['BR']).toFixed(2) || '0.00';
 
 
     // // 处理商品描述
