@@ -904,7 +904,8 @@ async function populateGroceryReceipt(data) {
                     row.querySelector(`.faredown${i}`).textContent = parts[1];
                     row.querySelector(`.faredown${i}`).style.paddingLeft = '16px';
                 }else{
-                     row.querySelector(`.farename${i}`).textContent = itemName;
+                    row.querySelector(`.faredown${i}`).style.paddingLeft = '0px';
+                    row.querySelector(`.farename${i}`).textContent = itemName;
                 }
                 
                
