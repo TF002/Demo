@@ -1057,7 +1057,7 @@ async function populateElectronicStoreReceipt(data) {
     const total = subtotal + taxValue;
 
     template.querySelector('.subtotal.comma').textContent = subtotal.toFixed(2);
-    template.querySelector('.taxname1').textContent = data['BF'] || 'TAX';
+    // template.querySelector('.taxname1').textContent = data['BF'] || 'TAX';
     template.querySelector('.taxprice1.comma').textContent = taxValue.toFixed(2);
 
     const totalElements = template.querySelectorAll('.total.comma');
