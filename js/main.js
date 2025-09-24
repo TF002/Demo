@@ -658,7 +658,7 @@ async function populateGeneralGroceryReceipt(data) {
     });
 
     const acctEl = template.querySelector('.acct');
-    if (acctEl) acctEl.textContent = data['AZ'] || '6587';
+    if (acctEl) acctEl.textContent = data['BH'] || '6587';
 
     // BA列: 映射到 message1
     const message1El = template.querySelector('.message1');
@@ -897,11 +897,22 @@ async function populateGroceryReceipt(data) {
             const row = itemRows[i - 1];
             if (row) {
                 row.style.display = 'table-row';
-                row.querySelector(`.farename${i}`).textContent = itemName;
+                if (itemName.includes('|')) {
+                    console.log('包含 |');
+                    const parts = itemName.split('|').map(s => s.trim());
+                    row.querySelector(`.farename${i}`).textContent = parts[0];
+                    row.querySelector(`.faredown${i}`).textContent = parts[1];
+                }else{
+                     row.querySelector(`.farename${i}`).textContent = itemName;
+                }
+                
+               
                 row.querySelector(`.fareF${i}`).textContent = data[priceTag] || '';
                 row.querySelector(`.farenumber${i}`).textContent = data[upcCode] || '';
                 row.querySelector(`.fareprice${i}`).textContent = itemPrice.toFixed(2);
                 row.querySelector(`.fareX${i}`).textContent = data[tagCol] || '';
+
+
 
                 // // 根据用户的描述，L列是'X'标签，对应 .fareX{i}
                 // const tagElement = row.querySelector(`.fareX${i}`);
