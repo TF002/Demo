@@ -622,6 +622,11 @@ async function populateGeneralGroceryReceipt(data) {
         }
     }
 
+    template.querySelector('.trace').innerText = generateRandomNumber(6);
+    template.querySelector('.reference').innerText = generateRandomNumber(10);
+    template.querySelector('.acct').innerText = data['BT'] || '';
+        
+
     // --- 计算和填充总计 ---
     const taxValue = parseFloat(data['AW']) || 0; // 税费金额从 AW 列读取
     const total = subtotal + taxValue;
@@ -642,10 +647,10 @@ async function populateGeneralGroceryReceipt(data) {
     // --- 填充支付和消息 ---
     // 安全地填充每个元素，检查是否存在
     const cardTypeMain = data['AX'] || 'VISA';
-    const cardTypeSecondary = data['AY'] || cardTypeMain;
+    const cardTypeSecondary = data['BG'];
 
     const swipeCashEl = template.querySelector('.swipe.cash');
-    if (swipeCashEl) swipeCashEl.textContent = cardTypeMain;
+    if (swipeCashEl) swipeCashEl.textContent = cardTypeSecondary;
 
     const cardTypeElements = template.querySelectorAll('.cardtype');
     cardTypeElements.forEach(el => {
@@ -886,16 +891,17 @@ async function populateGroceryReceipt(data) {
             upcCode,
             priceTag
         })
-
+        console.log('data[tagCol]',data[tagCol])
+        console.log('data[priceTag]',data[priceTag])
         if (itemName && !isNaN(itemPrice)) {
             const row = itemRows[i - 1];
             if (row) {
                 row.style.display = 'table-row';
                 row.querySelector(`.farename${i}`).textContent = itemName;
-                row.querySelector(`.fareF${i}`).textContent = data[tagCol] || '';
+                row.querySelector(`.fareF${i}`).textContent = data[priceTag] || '';
                 row.querySelector(`.farenumber${i}`).textContent = data[upcCode] || '';
                 row.querySelector(`.fareprice${i}`).textContent = itemPrice.toFixed(2);
-                row.querySelector(`.fareX${i}`).textContent = data[priceTag] || '';
+                row.querySelector(`.fareX${i}`).textContent = data[tagCol] || '';
 
                 // // 根据用户的描述，L列是'X'标签，对应 .fareX{i}
                 // const tagElement = row.querySelector(`.fareX${i}`);
