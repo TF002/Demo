@@ -633,6 +633,11 @@ async function populateGeneralGroceryReceipt(data) {
     template.querySelector('.totalceil').textContent = total.toFixed(2);
     template.querySelector('.remain').textContent = '0.00';
 
+    // 人名
+    template.querySelector('.cashier').textContent = data['BI'] || '';
+
+    
+
 
     // --- 填充支付和消息 ---
     // 安全地填充每个元素，检查是否存在
