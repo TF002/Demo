@@ -902,6 +902,7 @@ async function populateGroceryReceipt(data) {
                     const parts = itemName.split('|').map(s => s.trim());
                     row.querySelector(`.farename${i}`).textContent = parts[0];
                     row.querySelector(`.faredown${i}`).textContent = parts[1];
+                    row.querySelector(`.faredown${i}`).style.paddingLeft = '16px';
                 }else{
                      row.querySelector(`.farename${i}`).textContent = itemName;
                 }
