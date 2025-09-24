@@ -888,8 +888,9 @@ async function populateGroceryReceipt(data) {
             }
         }
     }
+    console.log('44444',data['BQ'])
     template.querySelector('.subtotal').textContent = subtotal.toFixed(2);
-    template.querySelector('.taxpro1').textContent = data['BQ'] || '0.00';
+    template.querySelector('.taxpro1').textContent = data['BQ'] * 100 || '0.00';
     template.querySelector('.taxprice1').textContent = data['BR'] || '0.00';
 
 
