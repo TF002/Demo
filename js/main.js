@@ -1070,7 +1070,7 @@ async function populateElectronicStoreReceipt(data) {
                 row.querySelector(`.itemCouponB${i}`).textContent = data[tagCol] || '';
                 row.querySelector(`.item${i}_Description1`).textContent = data[couponACol] || '';
                 row.querySelector(`.itemprice${i}`).textContent = itemPrice.toFixed(2);
-                row.querySelector(`.itemBT${i}`).textContent = data[descCol] || 'N';
+                row.querySelector(`.itemBT${i}`).textContent = ` ${data[descCol]}` || 'N';
                 subtotal += itemPrice;
             }
         }
