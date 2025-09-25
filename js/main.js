@@ -612,7 +612,7 @@ async function populateGeneralGroceryReceipt(data) {
         if (itemName && !isNaN(itemPrice)) {
             const row = template.querySelector(`.Pitem .remove_tr:nth-child(${i})`);
             if (row) {
-                row.style.display = 'table-row';
+                row.style.display = 'block';
                 row.querySelector(`.itemname${i}`).textContent = itemName;
                 row.querySelector(`.itemdown${i}`).textContent = data[descCol] || '';
                 row.querySelector(`.itemprice${i}`).textContent = itemPrice.toFixed(2);
