@@ -581,12 +581,18 @@ async function populateGeneralGroceryReceipt(data) {
     });
 
     // --- 填充静态数据 ---
+
+    generateGeneralGroceryRandomNumbers();
+
     template.querySelector('.enddate').textContent = formatExcelDate(data['A']) || '09/11/2025';
     template.querySelector('.endtime').textContent = formatExcelTime(data['B']) || '15:03';
 
     template.querySelector('.address1').textContent = data['E'] || '804-330-7365';
     template.querySelector('.address2').textContent = data['F'] || '7107 Forest Hill Ave';
     template.querySelector('.address3').textContent = data['G'] || 'RichmondVA 23225';
+
+
+
 
     // --- 动态处理商品和计算 ---
     let subtotal = 0;
@@ -846,6 +852,8 @@ async function populateGroceryReceipt(data) {
     });
 
     // --- 填充静态数据 ---
+    generateGroceryRandomNumbers();
+
     // template.querySelector('.enddate').textContent = formatExcelDate(data['A']) || '';
     // template.querySelector('.endtime').textContent = formatExcelTime(data['B'], false) || '';
     template.querySelector('.address1').textContent = data['F'] || '';
@@ -865,6 +873,7 @@ async function populateGroceryReceipt(data) {
     } else {
         logoImg.style.display = 'none';
     }
+
 
     // --- 动态处理商品和计算 ---
     let subtotal = 0;
@@ -1025,6 +1034,8 @@ async function populateElectronicStoreReceipt(data) {
     });
 
     // --- 填充静态数据 ---
+    generateElectronicStoreRandomNumbers();
+
     template.querySelector('.checkindate.rightdate').textContent = formatExcelDate(data['A']) || '';
     template.querySelector('.rightnowtime.checkintime').textContent = formatExcelTime(data['B']) || '';
     template.querySelector('.address1').textContent = data['E'] || '';
@@ -1133,6 +1144,8 @@ async function populateOnlineFurnitureShopReceipt(data) {
     });
 
     // --- 填充静态数据 ---
+
+    generateOnlineFurnitureShopRandomNumbers();
     // 处理日期和时间格式
     const dateValue = formatExcelDate(data['A']) || '09/11/2025';
     const enddateElement = template.querySelector('#online-receipts-for-furniture-shop .enddate');
